@@ -19,7 +19,7 @@
 				</div>
 				<!-- info -->
 				<div class="info">
-					<a href="#" id="signin">로그인111</a> 
+					<a href="#" id="signin">로그인</a> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="#" id="signup">회원가입</a>
 				</div>
