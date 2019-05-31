@@ -7,6 +7,7 @@
 		<title>[BeEat] Main</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/layout.css" />
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
@@ -15,13 +16,13 @@
 			<div id="header">
 				<!-- logo -->
 				<div class="logo">
-					<a href="#">BeEat</a>
+					<a href="main.do">BeEat</a>
 				</div>
 				<!-- info -->
 				<div class="info">
 					<a href="#" id="signin">로그인</a> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" id="signup">회원가입</a>
+					<a href="member.do?method=signupF" id="signup">회원가입</a>
 				</div>
 				<!-- search -->
 				<div class="search">

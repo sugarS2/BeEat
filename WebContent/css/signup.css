@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+}
+body{
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+	height: 100%;
+  	margin: 0 auto;
+}
+
+.limiter {
+	width: 100%;
+	min-height: 100vh;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	background: #ffc000;
+}
+
+.loginWrapper {
+	width: 400px;
+	height:550px;
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+	-o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+	-ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+/******************* logo *******************/
+.logo a {
+	text-decoration: none;
+}
+.logo a img{
+	width:250px;
+	height:150px;
+}
+
+/******************* form *******************/
+form{
+	width:300px;
+	text-align:left;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+input:focus{
+	background: #f1f1f1;
+}
+button{
+	width: 30%;
+	padding: 10px;
+	margin: 30px 20px;
+	display: inline;
+	border: none;
+	border-radius:7px;
+	background: #000080;
+	color:white;
+	font-size:15px;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+
+.link_signinF{
+	color:#808080;
+}
+.link_signinF a{
+	color:#808080;
+}
