@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+html,body{
+	margin:0; padding:0;
+	height:100%;
+}
+
+#wrapper{
+	position:relative;
+	min-height:100%;
+	font-family: 'Do Hyeon', 'Dokdo', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+
+a {
+	color:#001d5d;
+	text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:#808080;
+}
+
+/************ header ************/
+#header {
+	position:fixed;
+	top:0; left:0;
+	width:100%;
+	height:200px; /* height값 변경 시 #content의 padding-top도 변경 */ 
+    border-bottom: 1px solid #ddd;
+    background:white; 
+}
+
+#header .logo {
+	display:inline-block;
+	font-size:60px;
+	padding:10px 30px; /* 위/아래 , 오/왼 */
+}
+#header .logo a {
+	color:#ffc000;
+	text-decoration: none;
+}
+
+#header .info{
+	float:right;
+	display:inline-block;
+	padding:20px 20px;
+}
+#header .info a{
+	font-size:20px;
+}
+#header .info:after{
+	clear:both;
+}
+
+#header .search{
+	top:50%;
+}
+#header .search .row{
+	margin-top:-20px;
+}
+
+#header .nav {
+	border-top: 1px solid #ddd;
+}
+#header .nav ul{
+	list-style-type:none;
+	margin:0 auto;
+	text-align:center;
+}
+#header .nav ul li{
+	display:inline-block;
+	padding: 10px 50px 10px 50px;
+	font-size:20px;
+}
+
+/************ content ************/
+#content {
+	text-align:center;
+    padding-top:200px;
+}
+
+#content .top-list-wrap .top-list-title h2{
+	padding-top:30px;
+}
+
+#content .top-list-wrap .top-list-imgs-wrap ul{
+	list-style-type:none;
+	margin:0 auto;
+	text-align:center;
+}
+#content .top-list-wrap .top-list-imgs-wrap ul li{
+	display:inline-block;
+}
+#content .top-list-wrap .top-list-imgs-wrap ul li .top-list-imgs{
+	width:400px;
+	height:600px;
+	margin:20px;
+}
+
+/************ footer ************/
+#footer {
+    bottom:0;
+    width:100%;
+    height:70px;   
+    background:#ccc;
+}

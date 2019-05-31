@@ -3,14 +3,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />		
 		<title>[BeEat] Main</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
-		<center>
+		<div id="wrapper">
 			<!-- header -->
 			<div id="header">
 				<!-- logo -->
@@ -19,11 +19,10 @@
 				</div>
 				<!-- info -->
 				<div class="info">
-					<a href="#" id="signin">로그인1</a> 
+					<a href="#" id="signin">로그인</a> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="#" id="signup">회원가입</a>
 				</div>
-				<br/><br/>
 				<!-- search -->
 				<div class="search">
 					<div class="row justify-content-center">
@@ -54,19 +53,25 @@
 			
 			<!-- content -->
 			<div id="content">
-				<div id="container">
-				메인<br>
-				메인<br>
-				메인<br>
-				메인<br>
-				메인<br>메인<br>메인<br>메인<br>메인<br>메인<br>메인<br>메인<br>메인<br>메인<br>
+				<!-- 최고 맛집 top3 부분 -->
+				<div class="top-list-wrap">
+					<div class="top-list-title">
+						<h2> "금주 top3 맛집" </h2>
+					</div>
+					<div class="top-list-imgs-wrap">
+						<ul>
+							<li><img src="imgs/list1.jpg" class="top-list-imgs"></li>
+							<li><img src="imgs/list2.jpg" class="top-list-imgs"></li>
+							<li><img src="imgs/list3.jpg" class="top-list-imgs"></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			
 			<!-- footer -->
 			<div id="footer">
-			
+				푸터
 			</div>
-		</center>
+		</div>
 	</body>
 </html>
