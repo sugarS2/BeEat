@@ -28,7 +28,7 @@ body{
 
 .loginWrapper {
 	width: 400px;
-	height:550px;
+	height:400px;
 	background: #fff;
 	border-radius: 10px;
 	overflow: hidden;
@@ -101,6 +101,7 @@ button:hover{
 [ Alert validate ]*/
 
 label.error{
+	padding-top:-5px;
 	color:red;
 	font-size:10px;
 }

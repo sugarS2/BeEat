@@ -19,18 +19,18 @@
 							<img src="../imgs/BeEat_logo.png" />
 						</a>
 					</div>
-					<form>
+					<form class="validate_form" name="signup" id="validate_form" method="post" action="../member.do?method=signup">
 						<label for="email">Email</label> <br/>
-						<input type="text" name="email" placeholder="Enter Email" required/> <br/>
+						<input type="email" name="email" id="email" placeholder="Enter Email"/> <br/>
 						
 						<label for="name">Name</label> <br/>
-						<input type="text" name="name" placeholder="Enter Name" required/> <br/>
+						<input type="text" name="name" id="name" placeholder="Enter Name"/> <br/>
 						
 						<label for="pwd">Password</label> <br/>
-						<input type="password" name="pwd" placeholder="Enter Password" required/> <br/>
+						<input type="password" name="pwd" id="pwd" placeholder="Enter Password"/> <br/>
 						
-						<label for="pwd-repeat">Repeat Password</label> <br/>
-						<input type="password" name="pwd-repeat" placeholder="Repeat Password" required/> <br/>
+						<label for="pwd_repeat">Repeat Password</label> <br/>
+						<input type="password" name="pwd_repeat" id="pwd_repeat" placeholder="Repeat Password"/> <br/>
 						
 						<center><button type="submit">가 입</button><button type="reset">취 소</button></center>
 					</form>
@@ -38,5 +38,8 @@
 				</div>
 			</div>
 		</center>
+		<script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>		
+		<script src="../js/signup.js"></script>
 	</body>
 </html>
