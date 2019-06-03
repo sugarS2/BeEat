@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,9 +22,23 @@
 				</div>
 				<!-- info -->
 				<div class="info">
-					<a href="member.do?method=signinF" id="signin">로그인</a> 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="member.do?method=signupF" id="signup">회원가입</a>
+					<!-- 로그인한 사용자가 없는 경우 -->
+					<c:if test="${dto eq null}">
+						<a href="member.do?method=signinF" id="signin">로그인</a> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="member.do?method=signupF" id="signup">회원가입</a>
+					</c:if>
+					<!-- 사용자가 로그인한 경우 -->
+					<c:if test="${dto ne null}">
+						${dto.email}님 접속
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="member.do?method=logout" id="logout">로그아웃</a>
+						<!-- 관리자가 로그인한 경우 -->
+						<c:if test="${dto.email eq 'admin'}">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="member.do?method=admin" id="admin">회원관리</a>
+						</c:if>
+					</c:if>
 				</div>
 				<!-- search -->
 				<div class="search">
@@ -46,7 +62,7 @@
 				<div class="nav">
 					<ul>
 						<li> <a href="#">메인</a> </li>
-						<li> <a href="#">맛집 찾기</a> </li>
+						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
 						<li> <a href="#">뽐내기</a> </li>
 					</ul>
 				</div>

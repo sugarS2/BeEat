@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />		
-		<title>[BeEat] Sign UP</title>
+		<title>[BeEat] Sign Up</title>
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="../css/signup.css" />
 	</head>

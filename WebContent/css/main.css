@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+a {
+	color:#001d5d;
+	text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:#808080;
+}
+
 /************ content ************/
 #content .top-list-wrap .top-list-title h2{
 	padding-top:30px;

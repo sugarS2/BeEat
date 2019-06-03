@@ -11,17 +11,6 @@ html,body{
 	font-family: 'Do Hyeon', 'Dokdo', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
 }
 
-a {
-	color:#001d5d;
-	text-decoration: none;
-    transition: 0.3s ease-in-out;
-}
-
-a:hover{
-	text-decoration: underline;
-	color:#808080;
-}
-
 /************ header ************/
 #header {
 	position:fixed;
@@ -30,6 +19,7 @@ a:hover{
 	height:200px; /* height값 변경 시 #content의 padding-top도 변경 */ 
     border-bottom: 1px solid #ddd;
     background:white; 
+    z-index:1;
 }
 
 #header .logo {

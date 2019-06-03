@@ -70,7 +70,7 @@ private DataSource ds;
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(MemberSQL.SIGN_IN);
 			pstmt.setString(1,dto.getEmail());
-			pstmt.setString(2,dto.getName());
+			pstmt.setString(2,dto.getPwd());
 			rs = pstmt.executeQuery();
 			rs.next(); 
 			return rs.getInt(1);
