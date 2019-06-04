@@ -14,14 +14,14 @@ public class HotPlaceDTO {
 	private String h_img2;
 	private String h_img3;
 	private int h_readnum;
-	private int h_grade;
+	private float h_grade;
 	private String email; // ¿Ü·¡Å°
 	
 	
 	public HotPlaceDTO() {}
 	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
 			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, int h_readnum,
-			int h_grade, String email) {
+			float h_grade, String email) {
 		super();
 		this.h_code = h_code;
 		this.h_name = h_name;
@@ -119,10 +119,10 @@ public class HotPlaceDTO {
 	public void setH_readnum(int h_readnum) {
 		this.h_readnum = h_readnum;
 	}
-	public int getH_grade() {
+	public float getH_grade() {
 		return h_grade;
 	}
-	public void setH_grade(int h_grade) {
+	public void setH_grade(float h_grade) {
 		this.h_grade = h_grade;
 	}
 	public String getEmail() {

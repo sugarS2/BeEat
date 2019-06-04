@@ -141,7 +141,7 @@
 									<td>
 										<select name="h_grade">
 											<% for(float i=0.0f; i<=5.0; i+=0.5){ %>
-												<option><%= i %></option>
+												<option value="<%= i %>"><%= i %></option>
 											<% } %>
 										</select>
 									</td>

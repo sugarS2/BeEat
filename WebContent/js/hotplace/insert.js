@@ -15,7 +15,7 @@ $(function(){
 				h_info : {required:true},
 				//h_tel : {required:true},
 				//h_time : {required:true},
-				h_name : {required:true}, 
+				h_menu : {required:true}, 
 				h_img1 : {
 					required:true, 
 					extension:"jpg|png"

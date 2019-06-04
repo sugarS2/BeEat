@@ -79,7 +79,11 @@
 						<div class="hotplace-title">
 							믿고 보는 맛집 리스트
 						</div>
-						<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
+						
+						<!-- 로그인한 경우에만 글쓰기 가능 -->
+						<c:if test="${dto ne null}">
+							<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
+						</c:if>
 						
 						<!-- hotplace-category -->
 						<div class="hotplace-category">
