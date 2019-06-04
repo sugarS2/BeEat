@@ -10,8 +10,10 @@
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="./css/layout.css?ver=1.1" />
 		<link rel="stylesheet" href="./css/hotplace/insert.css?ver=1.1" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		<script src="./js/hotplace/list.js"></script>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> 
+		<script src="./js/hotplace/insert.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -62,8 +64,8 @@
 				<!-- nav -->
 				<div class="nav">
 					<ul>
-						<li> <a href="#">메인</a> </li>
-						<li> <a href="./hotplace.do">맛집 찾기</a> </li>
+						<li> <a href="./main.do">메인</a> </li>
+						<li> <a href="./hotplace.do?method=list">맛집 찾기</a> </li>
 						<li> <a href="#">뽐내기</a> </li>
 					</ul>
 				</div>
@@ -74,7 +76,7 @@
 				<div class="content-border">
 					<center>
 						<div class="insert-title"> 글쓰기 </div>
-						<form name="insert-form" class="insert-form">
+						<form name="insert-form" class="insert-form" id="insert-form" method="post" enctype="multipart/form-data" action="./hotplace.do?method=insert">
 							<table class="insert-table">
 								<tr>
 									<th>매장명</th> 
@@ -93,53 +95,70 @@
 								<tr>
 									<th>지역</th> 
 									<td>
-										<select name="c_code">
-											<c:forEach items="${categoryList}" var="categoryDTO">
-												<option value="${categoryDTO.c_code}"> ${categoryDTO.c_name} </option>
+										<select name="loc_code">
+											<c:forEach items="${locList}" var="locDTO">
+												<option value="${locDTO.loc_code}"> ${locDTO.loc_addr1} ${locDTO.loc_addr2} </option>
 											</c:forEach>
 										</select>
 									</td>
 								</tr>
-								<!-- <tr>
+								<tr>
 									<th>상세주소</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
-									<th>매장 정보 및 소개</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="text" name="h_address" id="h_address" class="h_address"/></td>
+								</tr>
+								<tr>
+									<th>매장 정보/소개</th> 
+									<td>
+										<textarea name="h_info" id="h_info" class="h_info"></textarea>
+									</td>
+								</tr>
+								<tr>
 									<th>전화번호</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="text" name="h_tel" id="h_tel" class="h_tel" /></td>
+								</tr>
+								<tr>
 									<th>운영시간</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
-									<th>매장 대표 메뉴</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="text" name="h_time" id="h_time" class="h_time" /></td>
+								</tr>
+								<tr>
+									<th>대표 메뉴</th> 
+									<td><input type="text" name="h_menu" id="h_menu" class="h_menu" /></td>
+								</tr>
+								<tr>
 									<th>대표 이미지1</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="file" name="h_img1" id="h_img1" class="h_img1" accept="jpg"/></td>
+								</tr>
+								<tr>
 									<th>대표 이미지2</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="file" name="h_img2" id="h_img2" class="h_img2" /></td>
+								</tr>
+								<tr>
 									<th>대표 이미지3</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td><input type="file" name="h_img3" id="h_img3" class="h_img3" /></td>
+								</tr>
+								<tr>
 									<th>평점</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
-								<!-- <tr>
+									<td>
+										<select name="h_grade">
+											<% for(float i=0.0f; i<=5.0; i+=0.5){ %>
+												<option><%= i %></option>
+											<% } %>
+										</select>
+									</td>
+								</tr>
+								<tr>
 									<th>작성자</th> 
-									<td><input type="text" name="h_name" id="h_name" class="h_name" /></td>
-								</tr> -->
+									<td>
+										<input type="text" name="email" id="email" class="email" value="${dto.email}" readonly />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="btnWrapper">
+										<button type="submit" class="btn">추가</button>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<button type="reset" class="btn">다시 작성</button>
+									</td>
+								</tr>
 							</table>
 						</form>
 					</center>

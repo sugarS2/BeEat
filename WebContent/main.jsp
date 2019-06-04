@@ -61,7 +61,7 @@
 				<!-- nav -->
 				<div class="nav">
 					<ul>
-						<li> <a href="#">메인</a> </li>
+						<li> <a href="main.do">메인</a> </li>
 						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
 						<li> <a href="#">뽐내기</a> </li>
 					</ul>

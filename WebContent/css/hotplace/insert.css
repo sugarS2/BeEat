@@ -25,7 +25,23 @@ a:hover{
 	padding:20px;
 }
 
-.insert-form input,select,option{
+
+.insert-form input,select{
+	width: 60%;
+	padding: 3px;
+	margin: 0 0 10px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+.insert-form .h_address, .insert-form .email{
+	width:100%;
+}
+.insert-form input[type="file"]{
+	width:100%;
+}
+.insert-form option,textarea{
 	width: 100%;
 	padding: 3px;
 	margin: 0 0 10px 0;
@@ -35,13 +51,36 @@ a:hover{
 	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
 }
 
-/* .insert-table {
-	 display:table;
-} */
-.insert-table th,td{
+.insert-table {
+	 /* display:table; */
+	 width:500px;
+} 
+.insert-table th{
+	font-size:25px;
+	color:#000080;
+	padding:10px;
+	width:160px;
+	text-align:center;
+	/* display:table-cell; vertical-align:middle; */
+}
+.insert-table td{
 	font-size:20px;
 	padding:10px;
+	/* display:table-cell; vertical-align:middle; */
+}
+
+.btnWrapper{
 	text-align:center;
-	/* display:table-cell;
-	vertical-align:middle; */
+}
+.btnWrapper .btn{
+	background-color:#000080;
+	color:white;
+	margin-bottom:20px;
+}
+
+
+/************** validate-error **************/
+label.error{
+	color:red;
+	font-size:20px;
 }

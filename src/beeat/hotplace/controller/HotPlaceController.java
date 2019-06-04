@@ -66,8 +66,11 @@ public class HotPlaceController extends HttpServlet {
 		// 업종 목록 불러오기
 		CategoryService categoryService = CategoryService.getInstance();
 		ArrayList<CategoryDTO> categoryList = categoryService.findAll();
+		LocService locService = LocService.getInstance();
+		ArrayList<LocDTO> locList = locService.findAll();
 		
 		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("locList", locList);
 		RequestDispatcher rd = request.getRequestDispatcher("hotplace/insert.jsp");
 		rd.forward(request, response);
 	}
