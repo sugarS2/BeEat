@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+
+#content .content-border {
+	margin: 5px;
+	border: 10px solid #ffc000;
+}
+
+a {
+	color:#000080;
+	text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:#808080;
+}
+
+
+/************** content **************/
+.insert-title{
+	color:#000080;
+	font-size:40px;
+	padding:20px;
+}
+
+.insert-form input,select,option{
+	width: 100%;
+	padding: 3px;
+	margin: 0 0 10px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+
+/* .insert-table {
+	 display:table;
+} */
+.insert-table th,td{
+	font-size:20px;
+	padding:10px;
+	text-align:center;
+	/* display:table-cell;
+	vertical-align:middle; */
+}
