@@ -17,4 +17,12 @@ public class HotPlaceService {
 	public ArrayList<HotPlaceDTO> findAll() {
 		return hotplaceDAO.findAll();
 	}
+	// insert 
+	public void insert(HotPlaceDTO dto) {
+		hotplaceDAO.insert(dto);
+	}
+	// findByCode
+	public HotPlaceDTO findByCode(int h_code) {
+		return hotplaceDAO.findByCode(h_code);
+	}
 }

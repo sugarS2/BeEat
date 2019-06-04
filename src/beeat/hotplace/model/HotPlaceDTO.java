@@ -17,6 +17,11 @@ public class HotPlaceDTO {
 	private float h_grade;
 	private String email; // 외래키
 	
+	//loc table
+	private String loc_addr1;
+	private String loc_addr2;
+	//category table
+	private String c_name;
 	
 	public HotPlaceDTO() {}
 	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
@@ -38,6 +43,30 @@ public class HotPlaceDTO {
 		this.h_readnum = h_readnum;
 		this.h_grade = h_grade;
 		this.email = email;
+	}
+	// LOC테이블과 CATEGORY테이블의 컬럼명들도 포함된 생성자
+	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
+			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, int h_readnum,
+			float h_grade, String email, String loc_addr1, String loc_addr2, String c_name) {
+		super();
+		this.h_code = h_code;
+		this.h_name = h_name;
+		this.c_code = c_code;
+		this.loc_code = loc_code;
+		this.h_address = h_address;
+		this.h_info = h_info;
+		this.h_tel = h_tel;
+		this.h_time = h_time;
+		this.h_menu = h_menu;
+		this.h_img1 = h_img1;
+		this.h_img2 = h_img2;
+		this.h_img3 = h_img3;
+		this.h_readnum = h_readnum;
+		this.h_grade = h_grade;
+		this.email = email;
+		this.loc_addr1 = loc_addr1;
+		this.loc_addr2 = loc_addr2;
+		this.c_name = c_name;
 	}
 	
 	
@@ -130,5 +159,23 @@ public class HotPlaceDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getLoc_addr1() {
+		return loc_addr1;
+	}
+	public void setLoc_addr1(String loc_addr1) {
+		this.loc_addr1 = loc_addr1;
+	}
+	public String getLoc_addr2() {
+		return loc_addr2;
+	}
+	public void setLoc_addr2(String loc_addr2) {
+		this.loc_addr2 = loc_addr2;
+	}
+	public String getC_name() {
+		return c_name;
+	}
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
 	}
 }

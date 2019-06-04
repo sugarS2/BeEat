@@ -72,8 +72,7 @@ a:hover{
 .hotplace-list ul li{
 	display:inline-block !important;
 	width:45%;
-	height:350px;
-	
+	height:350px;	
 }
 .hotplace-list ul li a{
 	text-decoration:none;

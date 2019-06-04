@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="./css/layout.css?ver=1.2" />
-		<link rel="stylesheet" href="./css/hotplace/list.css?ver=1.2" />
+		<link rel="stylesheet" href="./css/hotplace/content.css?ver=1.2" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="./js/hotplace/list.js"></script>
 	</head>
@@ -73,44 +73,33 @@
 			<!-- content -->
 			<div id="content">
 				<div class="content-border">
-					<!-- content-header -->
-					<div class="hotplace-header">
-						<!-- content-title -->
-						<div class="hotplace-title">
-							믿고 보는 맛집 리스트
-						</div>
-						
-						<!-- 로그인한 경우에만 글쓰기 가능 -->
-						<c:if test="${dto ne null}">
-							<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
-						</c:if>
-						
-						<!-- hotplace-category -->
-						<div class="hotplace-category">
+					<center>
+						<!-- 이미지 -->
+						<div class="imgList">
 							<ul>
-								<c:forEach items="${categoryList}" var="categoryDTO">
-									<li> <a href="#">${categoryDTO.c_name}</a> </li>
-								</c:forEach>
+								<c:if test="${dto.h_img1 ne null}"> <li><img class="img" src="./imgs/${dto.h_img1}" alt="${dto.h_img1}"></li> </c:if>
+								<c:if test="${dto.h_img2 ne null}"> <li><img class="img" src="./imgs/${dto.h_img2}" alt="${dto.h_img2}"></li> </c:if>
+								<c:if test="${dto.h_img3 ne null}"> <li><img class="img" src="./imgs/${dto.h_img3}" alt="${dto.h_img3}"></li> </c:if>
 							</ul>
 						</div>
-					</div> <!-- content-header 끝 -->
-					
-					<!-- hotplace-list -->
-					<div class="hotplace-list">
-							<ul>
-								<c:forEach items="${hotplaceList}" var="hotplaceDTO">
-									<li>
-										<a href="./hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
-											<div class="list-item">
-												<img class="list-item-img" src="./imgs/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}">
-												<div class="list-item-text">${hotplaceDTO.h_name}</div>
-											</div>
-										</a>
-									</li>
-								</c:forEach>
-							</ul>
-					</div> <!-- hotplace-list 끝 -->
-					
+						<!-- 가게명, 평점, 조회수, 답글 수  -->
+						<div class="place-info">
+							<div class="h_name">${dto.h_name}</div>
+							<div class="h_grade">평점 : ${dto.h_grade}</div>
+							<div class="h_replyCount">답글수</div>
+						</div>
+						
+						<div class="place-info-detail">
+							가게에 대한 자세한 정보
+							<table>
+								<tr> <td>주소</td> <td>${dto.loc_addr1} ${dto.loc_addr2} ${dto.h_address}</td> </tr>
+								<tr> <td>전화번호</td> <td>${dto.h_tel}</td> </tr>
+								<tr> <td>음식 종류</td> <td>${dto.c_name}</td> </tr>
+								<tr> <td>영업시간</td> <td>${dto.h_time}</td> </tr>
+								<tr> <td>메뉴</td> <td>${dto.h_menu}</td> </tr>
+							</table>
+						</div>
+					</center>
 				</div>
 			</div>
 			
