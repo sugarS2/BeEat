@@ -12,4 +12,8 @@ public class HotPlaceSQL {
 	static final String UPDATE = "UPDATE HOTPLACE SET h_name=?, c_code=?, loc_code=?, h_address=?, h_info=?, "
 								+ "  h_tel=?, h_time=?, h_menu=?, h_img1=?, h_img2=?, h_img3=?, h_date=SYSDATE, h_grade=? "
 								+ "WHERE h_code=?";
+	static final String DELETE = "DELETE FROM HOTPLACE WHERE h_code=?";
+	
+	
+	static final String FIND_BY_CATEGORY = "SELECT * FROM HOTPLACE WHERE c_code=?";
 }

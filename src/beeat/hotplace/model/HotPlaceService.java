@@ -29,4 +29,14 @@ public class HotPlaceService {
 	public void update(HotPlaceDTO dto) {
 		hotplaceDAO.update(dto);
 	}
+	// delete 
+	public void delete(int h_code) {
+		hotplaceDAO.delete(h_code);
+	}
+	
+	
+	// findByCategory
+	public ArrayList<HotPlaceDTO> findByCategory(int c_code) {
+		return hotplaceDAO.findByCategory(c_code);
+	}
 }

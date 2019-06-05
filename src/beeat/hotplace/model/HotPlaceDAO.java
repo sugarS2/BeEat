@@ -177,4 +177,68 @@ class HotPlaceDAO {
 			}catch(SQLException se) {}
 		}
 	}
+	
+	// delete 
+	void delete(int h_code) {
+		Connection conn=null; PreparedStatement pstmt=null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.DELETE);
+			pstmt.setInt(1, h_code);
+			int i = pstmt.executeUpdate();
+			if(i>0) System.out.println("HotPlace 글 삭제 성공");
+			else System.out.println("HotPlace 글 삭제 실패");
+		}catch(SQLException se) {
+			System.out.println("[DELETE문 오류] "+se);
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
+	
+	
+	
+	// findByCategory
+	ArrayList<HotPlaceDTO> findByCategory(int c_code) {
+		ArrayList<HotPlaceDTO> list = new ArrayList<HotPlaceDTO>();
+		Connection conn=null; PreparedStatement pstmt=null; ResultSet rs=null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.FIND_BY_CATEGORY);
+			pstmt.setInt(1, c_code);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int h_code = rs.getInt("h_code");
+				String h_name = rs.getString("h_name");
+				//int c_code = rs.getInt("c_code");
+				int loc_code = rs.getInt("loc_code");
+				String h_address = rs.getString("h_address");
+				String h_info = rs.getString("h_info");
+				String h_tel = rs.getString("h_tel");
+				String h_time = rs.getString("h_time");
+				String h_menu = rs.getString("h_menu");
+				String h_img1 = rs.getString("h_img1");
+				String h_img2 = rs.getString("h_img2");
+				String h_img3 = rs.getString("h_img3");
+				java.sql.Date h_date = rs.getDate("h_date");
+				int h_readnum = rs.getInt("h_readnum");
+				float h_grade = rs.getFloat("h_grade");
+				String email = rs.getString("email");
+				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email);
+				list.add(dto);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println("[SELECT문 오류] "+se);
+			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
 }

@@ -110,7 +110,7 @@
 						<c:if test="${dto.email eq hotplaceDTO.email}">
 							<div class="btnGroup">
 								<div class="insertBtn"><a href="hotplace.do?method=updateF&h_code=${hotplaceDTO.h_code}">수 정</a></div>
-								<div class="deleteBtn"><a href="hotplace.do?method=delete&h_code=${hotplaceDTO.h_code}">삭 제</a></div>
+								<div class="deleteBtn"><a href="hotplace.do?method=delete&h_code=${hotplaceDTO.h_code}" onclick="return checkDelete();">삭 제</a></div>
 							</div>
 						</c:if>
 					</center>
@@ -126,5 +126,6 @@
 		<!-- Daum Map API -->
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d30b5ae2dc0adb31cbd07f2eab3f254c&libraries=services,clusterer,drawing"></script>
 		<script src="./js/hotplace/content.js"></script>
+		<script src="./js/hotplace/delete.js"></script>
 	</body>
 </html>

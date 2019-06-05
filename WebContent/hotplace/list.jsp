@@ -76,8 +76,14 @@
 					<!-- content-header -->
 					<div class="hotplace-header">
 						<!-- content-title -->
-						<div class="hotplace-title">
-							믿고 보는 맛집 리스트
+						<div class="hotplace-title">믿고 보는 맛집 리스트</div>
+						
+						<div class="hotplace-order">
+							<select name="orderList">
+								<option value="h_code">최신순</option>
+								<option value="h_readnum">조회순</option>
+								<option value="h_grade">별점순</option>
+							</select>
 						</div>
 						
 						<!-- 로그인한 경우에만 글쓰기 가능 -->
@@ -88,8 +94,14 @@
 						<!-- hotplace-category -->
 						<div class="hotplace-category">
 							<ul>
+								<li> 
+									<a href="hotplace.do?method=list" class="categoryList">전체</a> 
+								</li>
 								<c:forEach items="${categoryList}" var="categoryDTO">
-									<li> <a href="#">${categoryDTO.c_name}</a> </li>
+									<c:set value="${c_code==categoryDTO.c_code?'clicked':''}" var="check" />
+									<li class="${check}"> 
+										<a href="hotplace.do?method=findByCategory&c_code=${categoryDTO.c_code}" >${categoryDTO.c_name}</a>
+									</li>
 								</c:forEach>
 							</ul>
 						</div>

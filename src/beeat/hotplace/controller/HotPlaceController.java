@@ -1,6 +1,7 @@
 package beeat.hotplace.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -42,7 +43,11 @@ public class HotPlaceController extends HttpServlet {
 			}else if(method.equals("update")) {
 				update(request, response);
 			}else if(method.equals("delete")) {
-				//delete(request, response);
+				delete(request, response);
+			}else if(method.equals("delete")) {
+				delete(request, response);
+			}else if(method.equals("findByCategory")) {
+				findByCategory(request, response);
 			}
 		}else {
 			response.sendRedirect("main.do");
@@ -105,7 +110,7 @@ public class HotPlaceController extends HttpServlet {
 		
 		HotPlaceService service = HotPlaceService.getInstance();
 		service.insert(dto);
-		response.sendRedirect("main.do");
+		response.sendRedirect("hotplace.do?method=list");
 	}
 	
 	
@@ -166,5 +171,30 @@ public class HotPlaceController extends HttpServlet {
 		HotPlaceService service = HotPlaceService.getInstance();
 		service.update(dto);
 		response.sendRedirect("hotplace.do?method=content&h_code="+h_code);
+	}
+	
+	
+	//delete
+	private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int h_code = Integer.parseInt(request.getParameter("h_code"));
+		HotPlaceService service = HotPlaceService.getInstance();
+		service.delete(h_code);
+		response.sendRedirect("hotplace.do?method=list");
+	}
+	
+	
+	// findByCategory
+	private void findByCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int c_code = Integer.parseInt(request.getParameter("c_code"));
+		CategoryService categoryService = CategoryService.getInstance();
+		ArrayList<CategoryDTO> categoryList = categoryService.findAll();
+		HotPlaceService hotplaceService = HotPlaceService.getInstance();
+		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findByCategory(c_code);
+		
+		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("hotplaceList", hotplaceList);
+		request.setAttribute("c_code", c_code);
+		RequestDispatcher rd = request.getRequestDispatcher("hotplace/list.jsp");
+		rd.forward(request, response);
 	}
 }
