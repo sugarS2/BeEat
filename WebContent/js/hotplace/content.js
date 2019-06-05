@@ -10,6 +10,8 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new daum.maps.services.Geocoder();
 
+var x,y;
+
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch($('.totalAddr').html(), function(result, status) {
 
@@ -17,7 +19,8 @@ geocoder.addressSearch($('.totalAddr').html(), function(result, status) {
      if (status === daum.maps.services.Status.OK) {
 
         var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
+        y = result[0].y;
+        x = result[0].x;
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new daum.maps.Marker({
             map: map,
@@ -34,3 +37,7 @@ geocoder.addressSearch($('.totalAddr').html(), function(result, status) {
         map.setCenter(coords);
     } 
 });    
+
+$('#daumMap').click(function(){
+	window.open('http://map.daum.net/link/to/'+$('.totalAddr').html()+','+x+','+y);
+})

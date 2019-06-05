@@ -76,7 +76,7 @@ a:hover{
 
 .h_date {
 	text-align:right;
-	padding-right:120px;
+	padding-right:200px;
 }
 
 
@@ -84,4 +84,23 @@ a:hover{
 #daumMap{
 	width:60%;
 	height:400px;
+}
+
+
+/********** [content] btnGroup **********/
+.btnGroup *{
+	display:inline-block;
+	margin:20px 15px;
+}
+.btnGroup a{
+	font-size:25px;
+	background:#001d5d;
+	opacity:0.9;
+	color:white;
+	padding:5px 20px;
+	border-radius:5px;
+}
+.btnGroup a:hover{
+	opacity:1;
+	text-decoration:none;
 }

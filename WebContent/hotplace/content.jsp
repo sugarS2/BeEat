@@ -82,9 +82,10 @@
 								<c:if test="${hotplaceDTO.h_img3 ne null}"> <li><img class="img" src="./imgs/hotplace/${hotplaceDTO.h_img3}" alt="${hotplaceDTO.h_img3}"></li> </c:if>
 							</ul>
 						</div>
-						<!-- 가게명, 평점, 조회수, 답글 수  -->
+						<!-- 가게명, 작성자, 평점, 조회수, 답글 수  -->
 						<div class="place-info">
 							<div class="h_name">${hotplaceDTO.h_name}</div>
+							<div class="email">작성자 : ${hotplaceDTO.name}</div>
 							<div class="h_grade">평점 : ${hotplaceDTO.h_grade}</div>
 							<div class="h_replyCount">답글수</div>
 						</div>
@@ -106,9 +107,12 @@
 						
 						<div class="h_date">업데이트 : ${hotplaceDTO.h_date}</div>
 						
-						<div class="btnGroup">
-							<div class="insertBtn"><a href="hotplace.do?method=update&h_code=${hotplaceDTO.h_code}">수정</a></div>
-						</div>
+						<c:if test="${dto.email eq hotplaceDTO.email}">
+							<div class="btnGroup">
+								<div class="insertBtn"><a href="hotplace.do?method=updateF&h_code=${hotplaceDTO.h_code}">수 정</a></div>
+								<div class="deleteBtn"><a href="hotplace.do?method=delete&h_code=${hotplaceDTO.h_code}">삭 제</a></div>
+							</div>
+						</c:if>
 					</center>
 				</div>
 			</div>
