@@ -1,5 +1,7 @@
 package beeat.hotplace.model;
 
+import java.util.Date;
+
 public class HotPlaceDTO {
 	private int h_code;
 	private String h_name;
@@ -13,6 +15,7 @@ public class HotPlaceDTO {
 	private String h_img1;
 	private String h_img2;
 	private String h_img3;
+	private Date h_date;
 	private int h_readnum;
 	private float h_grade;
 	private String email; // 외래키
@@ -25,7 +28,7 @@ public class HotPlaceDTO {
 	
 	public HotPlaceDTO() {}
 	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
-			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, int h_readnum,
+			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, Date h_date, int h_readnum,
 			float h_grade, String email) {
 		super();
 		this.h_code = h_code;
@@ -40,13 +43,14 @@ public class HotPlaceDTO {
 		this.h_img1 = h_img1;
 		this.h_img2 = h_img2;
 		this.h_img3 = h_img3;
+		this.h_date = h_date;
 		this.h_readnum = h_readnum;
 		this.h_grade = h_grade;
 		this.email = email;
 	}
 	// LOC테이블과 CATEGORY테이블의 컬럼명들도 포함된 생성자
 	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
-			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, int h_readnum,
+			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, Date h_date, int h_readnum,
 			float h_grade, String email, String loc_addr1, String loc_addr2, String c_name) {
 		super();
 		this.h_code = h_code;
@@ -61,6 +65,7 @@ public class HotPlaceDTO {
 		this.h_img1 = h_img1;
 		this.h_img2 = h_img2;
 		this.h_img3 = h_img3;
+		this.h_date = h_date;
 		this.h_readnum = h_readnum;
 		this.h_grade = h_grade;
 		this.email = email;
@@ -141,6 +146,12 @@ public class HotPlaceDTO {
 	}
 	public void setH_img3(String h_img3) {
 		this.h_img3 = h_img3;
+	}
+	public Date getH_date() {
+		return h_date;
+	}
+	public void setH_date(Date h_date) {
+		this.h_date = h_date;
 	}
 	public int getH_readnum() {
 		return h_readnum;

@@ -7,12 +7,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />		
 		<title>[BeEat] HotPlace List</title>
+		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="./css/layout.css?ver=1.2" />
-		<link rel="stylesheet" href="./css/hotplace/content.css?ver=1.2" />
+		<link rel="stylesheet" href="./css/layout.css?ver=1.1" />
+		<link rel="stylesheet" href="./css/hotplace/content.css?ver=1.1" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		<script src="./js/hotplace/list.js"></script>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -77,27 +77,37 @@
 						<!-- 이미지 -->
 						<div class="imgList">
 							<ul>
-								<c:if test="${dto.h_img1 ne null}"> <li><img class="img" src="./imgs/${dto.h_img1}" alt="${dto.h_img1}"></li> </c:if>
-								<c:if test="${dto.h_img2 ne null}"> <li><img class="img" src="./imgs/${dto.h_img2}" alt="${dto.h_img2}"></li> </c:if>
-								<c:if test="${dto.h_img3 ne null}"> <li><img class="img" src="./imgs/${dto.h_img3}" alt="${dto.h_img3}"></li> </c:if>
+								<c:if test="${hotplaceDTO.h_img1 ne null}"> <li><img class="img" src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}"></li> </c:if>
+								<c:if test="${hotplaceDTO.h_img2 ne null}"> <li><img class="img" src="./imgs/hotplace/${hotplaceDTO.h_img2}" alt="${hotplaceDTO.h_img2}"></li> </c:if>
+								<c:if test="${hotplaceDTO.h_img3 ne null}"> <li><img class="img" src="./imgs/hotplace/${hotplaceDTO.h_img3}" alt="${hotplaceDTO.h_img3}"></li> </c:if>
 							</ul>
 						</div>
 						<!-- 가게명, 평점, 조회수, 답글 수  -->
 						<div class="place-info">
-							<div class="h_name">${dto.h_name}</div>
-							<div class="h_grade">평점 : ${dto.h_grade}</div>
+							<div class="h_name">${hotplaceDTO.h_name}</div>
+							<div class="h_grade">평점 : ${hotplaceDTO.h_grade}</div>
 							<div class="h_replyCount">답글수</div>
 						</div>
 						
+						<!-- 가게에 대한 자세한 정보 -->
 						<div class="place-info-detail">
-							가게에 대한 자세한 정보
 							<table>
-								<tr> <td>주소</td> <td>${dto.loc_addr1} ${dto.loc_addr2} ${dto.h_address}</td> </tr>
-								<tr> <td>전화번호</td> <td>${dto.h_tel}</td> </tr>
-								<tr> <td>음식 종류</td> <td>${dto.c_name}</td> </tr>
-								<tr> <td>영업시간</td> <td>${dto.h_time}</td> </tr>
-								<tr> <td>메뉴</td> <td>${dto.h_menu}</td> </tr>
+								<tr> <th>주소</th> <td class="totalAddr">${hotplaceDTO.loc_addr1} ${hotplaceDTO.loc_addr2} ${hotplaceDTO.h_address}</td> </tr>
+								<tr> <th>전화번호</th> <td>${hotplaceDTO.h_tel}</td> </tr>
+								<tr> <th>음식 종류</th> <td>${hotplaceDTO.c_name}</td> </tr>
+								<tr> <th>영업시간</th> <td>${hotplaceDTO.h_time}</td> </tr>
+								<tr> <th>메뉴</th> <td>${hotplaceDTO.h_menu}</td> </tr>
+								<tr> <th>식당 소개</th> <td>${hotplaceDTO.h_info}</td> </tr>
 							</table>
+						</div>
+						
+						<!--  Daum Map -->
+						<div id="daumMap"></div>
+						
+						<div class="h_date">업데이트 : ${hotplaceDTO.h_date}</div>
+						
+						<div class="btnGroup">
+							<div class="insertBtn"><a href="hotplace.do?method=update&h_code=${hotplaceDTO.h_code}">수정</a></div>
 						</div>
 					</center>
 				</div>
@@ -109,6 +119,8 @@
 			</div>
 		</div>
 		
-		
+		<!-- Daum Map API -->
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d30b5ae2dc0adb31cbd07f2eab3f254c&libraries=services,clusterer,drawing"></script>
+		<script src="./js/hotplace/content.js"></script>
 	</body>
 </html>

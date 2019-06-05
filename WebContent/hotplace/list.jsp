@@ -102,7 +102,7 @@
 									<li>
 										<a href="./hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
 											<div class="list-item">
-												<img class="list-item-img" src="./imgs/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}">
+												<img class="list-item-img" src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}">
 												<div class="list-item-text">${hotplaceDTO.h_name}</div>
 											</div>
 										</a>

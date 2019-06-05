@@ -80,7 +80,7 @@ public class HotPlaceController extends HttpServlet {
 	private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//ServletContext sc = getServletContext();
 		//String saveDirectory = sc.getRealPath("/imgs/hotplace"); // 저장될 경로(이클립스 상 절대경로)
-		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs";
+		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/hotplace";
 		int maxPostSize = 5*1024*1024; // 파일 최대 사이즈 5MB로 지정
 		String encoding = "utf-8";
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
@@ -101,7 +101,7 @@ public class HotPlaceController extends HttpServlet {
 		float h_grade = Float.parseFloat(multi.getParameter("h_grade"));
 		String email = multi.getParameter("email");
 		
-		HotPlaceDTO dto = new HotPlaceDTO(-1, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, 0, h_grade, email);
+		HotPlaceDTO dto = new HotPlaceDTO(-1, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, null, 0, h_grade, email);
 		
 		HotPlaceService service = HotPlaceService.getInstance();
 		service.insert(dto);
@@ -113,8 +113,8 @@ public class HotPlaceController extends HttpServlet {
 	private void content(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int h_code = Integer.parseInt(request.getParameter("h_code"));
 		HotPlaceService service = HotPlaceService.getInstance();
-		HotPlaceDTO dto = service.findByCode(h_code);
-		request.setAttribute("dto", dto);
+		HotPlaceDTO hotplaceDTO = service.findByCode(h_code);
+		request.setAttribute("hotplaceDTO", hotplaceDTO);
 		RequestDispatcher rd = request.getRequestDispatcher("hotplace/content.jsp");
 		rd.forward(request, response);
 		

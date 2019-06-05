@@ -46,10 +46,11 @@ class HotPlaceDAO {
 				String h_img1 = rs.getString("h_img1");
 				String h_img2 = rs.getString("h_img2");
 				String h_img3 = rs.getString("h_img3");
+				java.sql.Date h_date = rs.getDate("h_date");
 				int h_readnum = rs.getInt("h_readnum");
 				int h_grade = rs.getInt("h_grade");
 				String email = rs.getString("email");
-				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_readnum, h_grade, email);
+				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email);
 				list.add(dto);
 			}
 			return list;
@@ -122,13 +123,14 @@ class HotPlaceDAO {
 			String h_img1 = rs.getString("h_img1");
 			String h_img2 = rs.getString("h_img2");
 			String h_img3 = rs.getString("h_img3");
+			java.sql.Date h_date = rs.getDate("h_date");
 			int h_readnum = rs.getInt("h_readnum");
 			int h_grade = rs.getInt("h_grade");
 			String email = rs.getString("email");
 			String loc_addr1 = rs.getString("loc_addr1");
 			String loc_addr2 = rs.getString("loc_addr2");
 			String c_name = rs.getString("c_name");
-			HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name);
+			HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name);
 			return dto; 
 		}catch(SQLException se) {
 			System.out.println("[SELECT¹® ¿À·ù] "+se);
