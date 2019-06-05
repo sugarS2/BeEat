@@ -20,6 +20,8 @@ public class HotPlaceDTO {
 	private float h_grade;
 	private String email; // 외래키
 	
+	//member table
+	private String name;
 	//loc table
 	private String loc_addr1;
 	private String loc_addr2;
@@ -51,7 +53,7 @@ public class HotPlaceDTO {
 	// LOC테이블과 CATEGORY테이블의 컬럼명들도 포함된 생성자
 	public HotPlaceDTO(int h_code, String h_name, int c_code, int loc_code, String h_address, String h_info,
 			String h_tel, String h_time, String h_menu, String h_img1, String h_img2, String h_img3, Date h_date, int h_readnum,
-			float h_grade, String email, String loc_addr1, String loc_addr2, String c_name) {
+			float h_grade, String email, String loc_addr1, String loc_addr2, String c_name, String name) {
 		super();
 		this.h_code = h_code;
 		this.h_name = h_name;
@@ -72,6 +74,7 @@ public class HotPlaceDTO {
 		this.loc_addr1 = loc_addr1;
 		this.loc_addr2 = loc_addr2;
 		this.c_name = c_name;
+		this.name = name;
 	}
 	
 	
@@ -188,5 +191,11 @@ public class HotPlaceDTO {
 	}
 	public void setC_name(String c_name) {
 		this.c_name = c_name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

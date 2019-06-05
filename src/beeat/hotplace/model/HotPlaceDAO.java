@@ -48,7 +48,7 @@ class HotPlaceDAO {
 				String h_img3 = rs.getString("h_img3");
 				java.sql.Date h_date = rs.getDate("h_date");
 				int h_readnum = rs.getInt("h_readnum");
-				int h_grade = rs.getInt("h_grade");
+				float h_grade = rs.getFloat("h_grade");
 				String email = rs.getString("email");
 				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email);
 				list.add(dto);
@@ -125,12 +125,13 @@ class HotPlaceDAO {
 			String h_img3 = rs.getString("h_img3");
 			java.sql.Date h_date = rs.getDate("h_date");
 			int h_readnum = rs.getInt("h_readnum");
-			int h_grade = rs.getInt("h_grade");
+			float h_grade = rs.getFloat("h_grade");
 			String email = rs.getString("email");
 			String loc_addr1 = rs.getString("loc_addr1");
 			String loc_addr2 = rs.getString("loc_addr2");
 			String c_name = rs.getString("c_name");
-			HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name);
+			String name = rs.getString("name");
+			HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name, name);
 			return dto; 
 		}catch(SQLException se) {
 			System.out.println("[SELECT문 오류] "+se);
@@ -138,6 +139,39 @@ class HotPlaceDAO {
 		}finally {
 			try {
 				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
+	
+	
+	// update 
+	void update(HotPlaceDTO dto) {
+		Connection conn=null; PreparedStatement pstmt=null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.UPDATE);
+			pstmt.setString(1, dto.getH_name());
+			pstmt.setInt(2, dto.getC_code());
+			pstmt.setInt(3, dto.getLoc_code());
+			pstmt.setString(4, dto.getH_address());
+			pstmt.setString(5, dto.getH_info());
+			pstmt.setString(6, dto.getH_tel());
+			pstmt.setString(7, dto.getH_time());
+			pstmt.setString(8, dto.getH_menu());
+			pstmt.setString(9, dto.getH_img1());
+			pstmt.setString(10, dto.getH_img2());
+			pstmt.setString(11, dto.getH_img3());
+			pstmt.setFloat(12, dto.getH_grade());
+			pstmt.setInt(13, dto.getH_code());
+			int i = pstmt.executeUpdate();
+			if(i>0) System.out.println("HotPlace 글 수정 성공");
+			else System.out.println("HotPlace 글 수정 실패");
+		}catch(SQLException se) {
+			System.out.println("[UPDATE문 오류] "+se);
+		}finally {
+			try {
 				if(pstmt!=null) pstmt.close();
 				if(conn!=null) conn.close();
 			}catch(SQLException se) {}

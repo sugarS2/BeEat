@@ -25,4 +25,8 @@ public class HotPlaceService {
 	public HotPlaceDTO findByCode(int h_code) {
 		return hotplaceDAO.findByCode(h_code);
 	}
+	// update
+	public void update(HotPlaceDTO dto) {
+		hotplaceDAO.update(dto);
+	}
 }
