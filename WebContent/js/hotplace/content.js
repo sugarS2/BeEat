@@ -50,7 +50,7 @@ function updateReply(hr_idx, hr_content){
 	this.hr_idx = hr_idx;
 	$('.hotplace-reply-input .hr_content').val(hr_content);
 	$('.hotplace-reply-input .replyBtn').val('수 정');
-	$('.hotplace-reply-input .resetBtn').attr("type", "reset");
+	$('.hotplace-reply-input .resetBtn').attr("type", "button");
 }
 
 

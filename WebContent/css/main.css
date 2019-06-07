@@ -20,12 +20,23 @@ a:hover{
 	list-style-type:none;
 	margin:0 auto;
 	text-align:center;
+	width:100%;
+	padding-inline-start: initial;
 }
 #content .top-list-wrap .top-list-imgs-wrap ul li{
 	display:inline-block;
+	width:30%;
+	margin-bottom:50px;
+}
+#content .top-list-wrap .top-list-imgs-wrap ul a{
+	color:#001d5d;
+	text-decoration: none;
+}
+#content .top-list-wrap .top-list-imgs-wrap ul a:hover{
+	cursor: pointer;
 }
 #content .top-list-wrap .top-list-imgs-wrap ul li .top-list-imgs{
-	width:400px;
-	height:600px;
-	margin:20px;
+	width:100%;
+	height:300px;
+	margin:20px 20px 0px 20px;
 }

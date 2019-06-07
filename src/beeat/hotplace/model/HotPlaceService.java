@@ -17,6 +17,10 @@ public class HotPlaceService {
 	public ArrayList<HotPlaceDTO> findAll() {
 		return hotplaceDAO.findAll();
 	}
+	// findByTop3ByReadNum : 조회수 기준으로 가장 높은 조회수를 가진 hotplace list를 뽑는 기능
+	public ArrayList<HotPlaceDTO> findTop3ByReadNum(){
+		return hotplaceDAO.findTop3ByReadNum();
+	}
 	// insert 
 	public void insert(HotPlaceDTO dto) {
 		hotplaceDAO.insert(dto);

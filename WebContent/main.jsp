@@ -77,9 +77,14 @@
 					</div>
 					<div class="top-list-imgs-wrap">
 						<ul>
-							<li><img src="imgs/list1.jpg" class="top-list-imgs"></li>
-							<li><img src="imgs/list2.jpg" class="top-list-imgs"></li>
-							<li><img src="imgs/list3.jpg" class="top-list-imgs"></li>
+							<c:forEach items="${hotplaceList}" var="hotplaceDTO" > 
+								<li>
+									<a href="hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
+										<img src="imgs/hotplace/${hotplaceDTO.h_img1}" class="top-list-imgs">
+										<div class="h_name">${hotplaceDTO.h_name} (조회수 : ${hotplaceDTO.h_readnum})</div>
+									</a>
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
