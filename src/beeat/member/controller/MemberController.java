@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,7 +63,11 @@ public class MemberController extends HttpServlet {
 	}
 	// signin
 	private void signin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    PrintWriter out = response.getWriter();
+		Cookie cookie = new Cookie("VIEWCOOKIE", null);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		
+		PrintWriter out = response.getWriter();
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		System.out.println(email + " , " + pwd);
@@ -81,6 +86,9 @@ public class MemberController extends HttpServlet {
 	
 	// logout
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie cookie = new Cookie("VIEWCOOKIE", null);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
 		HttpSession session = request.getSession();
 		session.invalidate();
 		response.sendRedirect("main.do");

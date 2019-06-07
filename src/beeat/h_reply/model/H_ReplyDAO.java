@@ -123,4 +123,27 @@ class H_ReplyDAO {
 			}catch(SQLException se) {}
 		}
 	}	
+	
+	
+	// countReplyByHCODE
+	int countReplyByHCODE(int h_code) {
+		Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(H_ReplySQL.COUNT_REPLY_BY_HCODE);
+			pstmt.setInt(1, h_code);
+			rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		}catch(SQLException se) {
+			System.out.println("[SELECT¹® ¿À·ù] "+se);
+			return -1;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}	
 }

@@ -29,4 +29,9 @@ public class H_ReplyService {
 	public void delete(int hr_idx) {
 		h_replyDAO.delete(hr_idx);
 	}
+	
+	// countReplyByHCODE
+	public int countReplyByHCODE(int h_code) {
+		return h_replyDAO.countReplyByHCODE(h_code);
+	}
 }

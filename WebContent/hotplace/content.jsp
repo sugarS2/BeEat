@@ -87,7 +87,8 @@
 							<div class="h_name">${hotplaceDTO.h_name}</div>
 							<div class="email">작성자 : ${hotplaceDTO.name}</div>
 							<div class="h_grade">평점 : ${hotplaceDTO.h_grade}</div>
-							<div class="h_replyCount">답글수</div>
+							<div class="h_replyCount">댓글수 : ${replyCount}</div>
+							<div class="h_readnum">조회수 : ${hotplaceDTO.h_readnum}</div>
 						</div>
 						
 						<!-- 가게에 대한 자세한 정보 -->

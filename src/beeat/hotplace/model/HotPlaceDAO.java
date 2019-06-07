@@ -293,4 +293,25 @@ class HotPlaceDAO {
 			}catch(SQLException se) {}
 		}
 	}
+	
+	
+	// updateReadNum
+	void updateReadNum(int h_code) {
+		Connection conn=null; PreparedStatement pstmt=null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.UPDATE_READNUM);
+			pstmt.setInt(1, h_code);
+			int i = pstmt.executeUpdate();
+			if(i>0) System.out.println("HotPlace 조회수 증가 성공");
+			else System.out.println("HotPlace 조회수 증가 실패");
+		}catch(SQLException se) {
+			System.out.println("[UPDATE문 오류] "+se);
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
 }

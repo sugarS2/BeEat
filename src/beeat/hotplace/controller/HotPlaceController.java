@@ -8,6 +8,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -120,14 +121,41 @@ public class HotPlaceController extends HttpServlet {
 	// content
 	private void content(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int h_code = Integer.parseInt(request.getParameter("h_code"));
-		HotPlaceService service = HotPlaceService.getInstance();
-		HotPlaceDTO hotplaceDTO = service.findByCode(h_code);
+		HotPlaceService hotplaceService = HotPlaceService.getInstance();
 		
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null; // 비교하기 위한 새로운 쿠키
+		// 쿠키가 있을 경우
+		if(cookies!=null && cookies.length>0) {
+			for(int i=0; i<cookies.length; i++) {
+				if(cookies[i].getName().equals("VIEWCOOKIE")) {
+					viewCookie = cookies[i];
+				}
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("VIEWCOOKIE", "|"+h_code+"|");
+			response.addCookie(newCookie);
+		}else {
+			String value = viewCookie.getValue();
+			if(! value.contains("|"+h_code+"|")) {
+				hotplaceService.updateReadNum(h_code); // 조회수 증가
+			}
+			if(value.indexOf("|"+h_code+"|")<0) {
+				value = value + "|"+h_code+"|";
+				viewCookie.setValue(value);
+				response.addCookie(viewCookie);
+			}
+		}
+		
+		HotPlaceDTO hotplaceDTO = hotplaceService.findByCode(h_code);
 		H_ReplyService h_replyService = H_ReplyService.getInstance();
 		ArrayList<H_ReplyDTO> h_replyList = h_replyService.findByHCODE(h_code);
+		int replyCount = h_replyService.countReplyByHCODE(h_code);
 		
 		request.setAttribute("hotplaceDTO", hotplaceDTO);
 		request.setAttribute("h_replyList", h_replyList);
+		request.setAttribute("replyCount", replyCount);
 		RequestDispatcher rd = request.getRequestDispatcher("hotplace/content.jsp");
 		rd.forward(request, response);
 	}

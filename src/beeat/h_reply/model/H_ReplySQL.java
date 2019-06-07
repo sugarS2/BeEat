@@ -5,4 +5,5 @@ public class H_ReplySQL {
 	static final String INSERT = "INSERT INTO H_REPLY VALUES(HREPLY_SEQ.NEXTVAL, ?, SYSDATE, ?, ?)";
 	static final String UPDATE = "UPDATE H_REPLY SET hr_content=? WHERE hr_idx=?";
 	static final String DELETE ="DELETE FROM H_REPLY WHERE hr_idx=?";
+	static final String COUNT_REPLY_BY_HCODE = "SELECT COUNT(*) FROM H_REPLY WHERE H_CODE=?";
 }

@@ -43,4 +43,9 @@ public class HotPlaceService {
 	public ArrayList<HotPlaceDTO> findByOptions(String order, int c_code) {
 		return hotplaceDAO.findByOptions(order, c_code);
 	}
+	
+	// updateReadNum
+	public void updateReadNum(int h_code) {
+		hotplaceDAO.updateReadNum(h_code);
+	}
 }
