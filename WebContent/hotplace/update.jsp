@@ -26,18 +26,18 @@
 				<!-- info -->
 				<div class="info">
 					<!-- 로그인한 사용자가 없는 경우 -->
-					<c:if test="${dto eq null}">
+					<c:if test="${memberDTO eq null}">
 						<a href="./member.do?method=signinF" id="signin">로그인</a> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="./member.do?method=signupF" id="signup">회원가입</a>
 					</c:if>
 					<!-- 사용자가 로그인한 경우 -->
-					<c:if test="${dto ne null}">
-						${dto.email}님 접속
+					<c:if test="${memberDTO ne null}">
+						${memberDTO.name}님 접속
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="./member.do?method=logout" id="logout">로그아웃</a>
 						<!-- 관리자가 로그인한 경우 -->
-						<c:if test="${dto.email eq 'admin'}">
+						<c:if test="${memberDTO.name eq 'admin'}">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="./member.do?method=admin" id="admin">회원관리</a>
 						</c:if>
@@ -78,6 +78,7 @@
 						<div class="update-title"> 글 수정 </div>
 						<form name="update-form" class="update-form" id="update-form" method="post" enctype="multipart/form-data" action="./hotplace.do?method=update">
 							<input type="hidden" name="h_code" id="h_code" class="h_code" value="${hotplaceDTO.h_code}"/>
+							<input type="hidden" name="email" id="email" class="email" value="${memberDTO.email}" readonly />
 							<table class="update-table">
 								<tr>
 									<th>매장명</th> 
@@ -153,7 +154,7 @@
 								<tr>
 									<th>작성자</th> 
 									<td>
-										<input type="text" name="email" id="email" class="email" value="${dto.email}" readonly />
+										<input type="text" name="name" id="name" class="name" value="${memberDTO.name}" disabled />
 									</td>
 								</tr>
 								<tr>

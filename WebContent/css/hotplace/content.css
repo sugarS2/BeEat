@@ -88,6 +88,9 @@ a:hover{
 
 
 /********** [content] btnGroup **********/
+.btnGroup{
+	padding-bottom:10px;
+}
 .btnGroup *{
 	display:inline-block;
 	margin:20px 15px;
@@ -103,4 +106,87 @@ a:hover{
 .btnGroup a:hover{
 	opacity:1;
 	text-decoration:none;
+}
+
+.btnGroup:after{
+	text-align:left;
+	content: "";
+	display: block;
+	width: 95%;
+	border-top: 5px solid #eee;
+}
+
+
+/********** [content] hotplace-reply **********/
+.hotplace-reply{
+	text-align:left;
+	padding-left:130px;
+	width:95%;
+}
+.hotplace-reply .hotplace-reply-title{
+	font-size:25px;
+}
+
+.hotplace-reply-input{
+	width:100%;
+}
+.hotplace-reply-input .name{
+	font-size:20px;
+	width:10%;
+}
+.hotplace-reply-input .hr_content{
+	width:60%;
+	padding: 5px;
+	margin: 0 0 10px 10px;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	font-family: 'Do Hyeon', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+}
+.hotplace-reply-input .replyBtn, .resetBtn{
+	width:10%;
+	padding:5px;
+	margin:10px;
+	display: inline-block;
+	border: none;
+	background: #001d5d;
+	color:white;
+}
+
+.hotplace-reply-list table{
+	width:90%;
+	background:#f1f1f1;
+	border-radius:5px;
+	margin:10px 0px 50px 0px;
+}
+.hotplace-reply-list .item:not(:last-child){
+	border-bottom:2px solid #808080;
+	border-bottom-width:80%;
+}
+.hotplace-reply-list .item *{
+	padding:5px;
+}
+.hotplace-reply-list .name{
+	width:15%;
+	text-align:center;
+	font-size:25px;
+}
+
+.hotplace-reply-list .hr_date{
+	font-size:13px;
+	color:#808080;
+	margin-bottom:-10px;
+}
+.hotplace-reply-list .hr_content{
+	font-size:17px;
+	display:inline-block;
+}
+
+.replyBtnGroup *{
+	border:none;
+	background:transparent;
+	text-decoration:underline;
+	color:#001d5d;
+	padding:5px;
+	margin:-15px 0px;
 }

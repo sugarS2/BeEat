@@ -6,6 +6,18 @@ $(function() {
 			}, function() {
 				$(this).removeClass('hovered');
 		});
+		
+		$('.orderList').change(function(){
+			var order = $('.orderList option:selected').attr('value');
+			var c_code = $('.clicked a').attr('id');
+			$.ajax({
+				url:"hotplace.do?method=findByOptions",
+				type:"POST",
+				data:{"order":order, "c_code":c_code}
+			});
+			alert(c_code+', ' + order);
+		});
+		
 	});
 });
 

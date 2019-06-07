@@ -25,18 +25,18 @@
 				<!-- info -->
 				<div class="info">
 					<!-- 로그인한 사용자가 없는 경우 -->
-					<c:if test="${dto eq null}">
+					<c:if test="${memberDTO eq null}">
 						<a href="member.do?method=signinF" id="signin">로그인</a> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=signupF" id="signup">회원가입</a>
 					</c:if>
 					<!-- 사용자가 로그인한 경우 -->
-					<c:if test="${dto ne null}">
-						${dto.email}님 접속
+					<c:if test="${memberDTO ne null}">
+						${memberDTO.name}님 접속
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=logout" id="logout">로그아웃</a>
 						<!-- 관리자가 로그인한 경우 -->
-						<c:if test="${dto.email eq 'admin'}">
+						<c:if test="${memberDTO.name eq 'admin'}">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="member.do?method=admin" id="admin">회원관리</a>
 						</c:if>
@@ -78,16 +78,16 @@
 						<!-- content-title -->
 						<div class="hotplace-title">믿고 보는 맛집 리스트</div>
 						
-						<div class="hotplace-order">
-							<select name="orderList">
+						<!-- <div class="hotplace-order">
+							<select name="orderList" class="orderList">
 								<option value="h_code">최신순</option>
 								<option value="h_readnum">조회순</option>
 								<option value="h_grade">별점순</option>
 							</select>
-						</div>
+						</div> -->
 						
 						<!-- 로그인한 경우에만 글쓰기 가능 -->
-						<c:if test="${dto ne null}">
+						<c:if test="${memberDTO ne null}">
 							<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
 						</c:if>
 						
@@ -95,12 +95,12 @@
 						<div class="hotplace-category">
 							<ul>
 								<li> 
-									<a href="hotplace.do?method=list" class="categoryList">전체</a> 
+									<a href="hotplace.do?method=list" class="categoryList" id="0">전체</a> 
 								</li>
 								<c:forEach items="${categoryList}" var="categoryDTO">
 									<c:set value="${c_code==categoryDTO.c_code?'clicked':''}" var="check" />
 									<li class="${check}"> 
-										<a href="hotplace.do?method=findByCategory&c_code=${categoryDTO.c_code}" >${categoryDTO.c_name}</a>
+										<a href="hotplace.do?method=findByCategory&c_code=${categoryDTO.c_code}" id="${categoryDTO.c_code}">${categoryDTO.c_name}</a>
 									</li>
 								</c:forEach>
 							</ul>

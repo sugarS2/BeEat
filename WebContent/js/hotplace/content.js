@@ -41,3 +41,59 @@ geocoder.addressSearch($('.totalAddr').html(), function(result, status) {
 $('#daumMap').click(function(){
 	window.open('http://map.daum.net/link/to/'+$('.totalAddr').html()+','+x+','+y);
 })
+
+
+/******** updateReply ********/
+var hr_idx;
+var h_code = $('.hotplace-reply-input .h_code').val();
+function updateReply(hr_idx, hr_content){
+	this.hr_idx = hr_idx;
+	$('.hotplace-reply-input .hr_content').val(hr_content);
+	$('.hotplace-reply-input .replyBtn').val('수 정');
+	$('.hotplace-reply-input .resetBtn').attr("type", "reset");
+}
+
+
+
+/******** checkReplyBtn('댓글달기'버튼인지 '댓글수정'버튼인지) ********/
+function checkReplyBtn(){
+	var replyBtn = $('.hotplace-reply-input .replyBtn').val();
+	var hr_content = $('.hotplace-reply-input .hr_content').val();
+	var email = $('.hotplace-reply-input .email').val();
+	if(replyBtn=='댓 글 달 기'){
+		$.ajax({
+			url:"h_reply.do?method=insert",
+			type:"POST",
+			data:{"h_code":h_code, "email":email, "hr_content":hr_content},
+		}).done(function(){
+			location.href="hotplace.do?method=content&h_code="+h_code;
+		});
+	}else if(replyBtn=='수 정'){
+		$.ajax({
+			url:"h_reply.do?method=update",
+			type:"POST",
+			data:{"hr_idx":hr_idx, "hr_content":hr_content},
+		}).done(function(){
+			location.href="hotplace.do?method=content&h_code="+h_code;
+		});
+	}
+}
+
+/******** 취소 버튼 눌렀을 때 ********/
+function changeReplyBtn(){
+	$('.hotplace-reply-input .resetBtn').attr("type", "hidden");
+	$('.hotplace-reply-input .hr_content').val("");
+	$('.hotplace-reply-input .replyBtn').val('댓 글 달 기');
+}
+
+
+/******** 삭제 버튼 눌렀을 때 ********/
+function deleteReply(hr_idx){
+	$.ajax({
+		url:"h_reply.do?method=delete",
+		type:"POST",
+		data:{"hr_idx":hr_idx},
+	}).done(function(){
+		location.href="hotplace.do?method=content&h_code="+h_code;
+	});
+}

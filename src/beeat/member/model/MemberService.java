@@ -18,7 +18,7 @@ public class MemberService {
 	public void signup(MemberDTO dto) {
 		memberDAO.signup(dto);
 	}
-	public int signin(MemberDTO dto) {
+	public MemberDTO signin(MemberDTO dto) {
 		return memberDAO.signin(dto);
 	}
 }

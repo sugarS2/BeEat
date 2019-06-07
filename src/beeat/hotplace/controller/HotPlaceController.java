@@ -19,6 +19,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 import beeat.member.model.*;
+import beeat.h_reply.model.*;
 import beeat.hotplace.model.*;
 
 
@@ -48,6 +49,8 @@ public class HotPlaceController extends HttpServlet {
 				delete(request, response);
 			}else if(method.equals("findByCategory")) {
 				findByCategory(request, response);
+			}else if(method.equals("findByOptions")) {
+				findByOptions(request, response);
 			}
 		}else {
 			response.sendRedirect("main.do");
@@ -119,7 +122,12 @@ public class HotPlaceController extends HttpServlet {
 		int h_code = Integer.parseInt(request.getParameter("h_code"));
 		HotPlaceService service = HotPlaceService.getInstance();
 		HotPlaceDTO hotplaceDTO = service.findByCode(h_code);
+		
+		H_ReplyService h_replyService = H_ReplyService.getInstance();
+		ArrayList<H_ReplyDTO> h_replyList = h_replyService.findByHCODE(h_code);
+		
 		request.setAttribute("hotplaceDTO", hotplaceDTO);
+		request.setAttribute("h_replyList", h_replyList);
 		RequestDispatcher rd = request.getRequestDispatcher("hotplace/content.jsp");
 		rd.forward(request, response);
 	}
@@ -193,6 +201,25 @@ public class HotPlaceController extends HttpServlet {
 		
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("hotplaceList", hotplaceList);
+		request.setAttribute("c_code", c_code);
+		RequestDispatcher rd = request.getRequestDispatcher("hotplace/list.jsp");
+		rd.forward(request, response);
+	}
+	
+	
+	// findByOptions
+	private void findByOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String order = request.getParameter("order");
+		int c_code = Integer.parseInt(request.getParameter("c_code"));
+		System.out.println(order + ", " + request.getParameter("c_code"));
+		CategoryService categoryService = CategoryService.getInstance();
+		ArrayList<CategoryDTO> categoryList = categoryService.findAll();
+		HotPlaceService hotplaceService = HotPlaceService.getInstance();
+		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findByOptions(order, c_code);
+		
+		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("hotplaceList", hotplaceList);
+		request.setAttribute("order", order);
 		request.setAttribute("c_code", c_code);
 		RequestDispatcher rd = request.getRequestDispatcher("hotplace/list.jsp");
 		rd.forward(request, response);

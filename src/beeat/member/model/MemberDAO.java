@@ -64,7 +64,7 @@ private DataSource ds;
 	}
 	
 	// signin
-	int signin(MemberDTO dto) {
+	MemberDTO signin(MemberDTO dto) {
 		Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
 		try {
 			conn = ds.getConnection();
@@ -72,11 +72,15 @@ private DataSource ds;
 			pstmt.setString(1,dto.getEmail());
 			pstmt.setString(2,dto.getPwd());
 			rs = pstmt.executeQuery();
-			rs.next(); 
-			return rs.getInt(1);
+			rs.next();
+			String email = rs.getString("email");
+			String name = rs.getString("name");
+			String pwd = rs.getString("pwd");
+			MemberDTO memberDTO = new MemberDTO(email, name, pwd);
+			return memberDTO;
 		}catch(SQLException se) {
 			System.out.println("[SELECT¹® ¿À·ù] "+se);
-			return -1;
+			return null;
 		}finally {
 			try {
 				if(rs!=null) rs.close();

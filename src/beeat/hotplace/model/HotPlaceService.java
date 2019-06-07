@@ -39,4 +39,8 @@ public class HotPlaceService {
 	public ArrayList<HotPlaceDTO> findByCategory(int c_code) {
 		return hotplaceDAO.findByCategory(c_code);
 	}
+	// findByOptions
+	public ArrayList<HotPlaceDTO> findByOptions(String order, int c_code) {
+		return hotplaceDAO.findByOptions(order, c_code);
+	}
 }

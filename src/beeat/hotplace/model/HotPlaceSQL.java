@@ -16,4 +16,14 @@ public class HotPlaceSQL {
 	
 	
 	static final String FIND_BY_CATEGORY = "SELECT * FROM HOTPLACE WHERE c_code=?";
+	
+	// order와 c_code에 따른 조회
+	static final String FIND_BY_OPTION1 = "SELECT * FROM HOTPLACE WHERE c_code=? ORDER BY h_code desc"; 
+	static final String FIND_BY_OPTION2 = "SELECT * FROM HOTPLACE WHERE c_code=? ORDER BY h_readnum desc";
+	static final String FIND_BY_OPTION3 = "SELECT * FROM HOTPLACE WHERE c_code=? ORDER BY h_grade desc";
+	
+	// order에 따른 조회
+	static final String FINDALL_BY_OPTION1 = "SELECT * FROM HOTPLACE ORDER BY h_code desc"; 
+	static final String FINDALL_BY_OPTION2 = "SELECT * FROM HOTPLACE ORDER BY h_readnum desc";
+	static final String FINDALL_BY_OPTION3 = "SELECT * FROM HOTPLACE ORDER BY h_grade desc";
 }

@@ -68,10 +68,10 @@ public class MemberController extends HttpServlet {
 		System.out.println(email + " , " + pwd);
 		MemberDTO dto = new MemberDTO(email, null, pwd);
 		MemberService service = MemberService.getInstance();
-		int check = service.signin(dto);
-		if(check==1) { // 로그인 성공 시 
+		MemberDTO memberDTO = service.signin(dto);
+		if(memberDTO!=null) { // 로그인 성공 시 
 			HttpSession session = request.getSession();
-			session.setAttribute("dto", dto);
+			session.setAttribute("memberDTO", memberDTO);
 			out.write("true");
 		}else { // 로그인 실패시 
 			out.write("false");

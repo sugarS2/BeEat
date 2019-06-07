@@ -25,18 +25,18 @@
 				<!-- info -->
 				<div class="info">
 					<!-- 로그인한 사용자가 없는 경우 -->
-					<c:if test="${dto eq null}">
+					<c:if test="${memberDTO eq null}">
 						<a href="member.do?method=signinF" id="signin">로그인</a> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=signupF" id="signup">회원가입</a>
 					</c:if>
 					<!-- 사용자가 로그인한 경우 -->
-					<c:if test="${dto ne null}">
-						${dto.email}님 접속
+					<c:if test="${memberDTO ne null}">
+						${memberDTO.name}님 접속
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=logout" id="logout">로그아웃</a>
 						<!-- 관리자가 로그인한 경우 -->
-						<c:if test="${dto.email eq 'admin'}">
+						<c:if test="${memberDTO.name eq 'admin'}">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="member.do?method=admin" id="admin">회원관리</a>
 						</c:if>
@@ -107,12 +107,55 @@
 						
 						<div class="h_date">업데이트 : ${hotplaceDTO.h_date}</div>
 						
-						<c:if test="${dto.email eq hotplaceDTO.email}">
+						<c:if test="${memberDTO.email eq hotplaceDTO.email}">
 							<div class="btnGroup">
 								<div class="insertBtn"><a href="hotplace.do?method=updateF&h_code=${hotplaceDTO.h_code}">수 정</a></div>
 								<div class="deleteBtn"><a href="hotplace.do?method=delete&h_code=${hotplaceDTO.h_code}" onclick="return checkDelete();">삭 제</a></div>
 							</div>
 						</c:if>
+						
+						
+						<div class="hotplace-reply">
+							<div class="hotplace-reply-title">댓글</div>
+							
+							<!-- 댓글 입력창 (로그인 한 경우에만 댓글 입력가능하게) -->
+							<c:if test="${memberDTO ne null}">
+								<div class="hotplace-reply-input">
+									<!-- method="post" action="h_reply.do?method=insert&h_code=${hotplaceDTO.h_code}" -->
+									<form name="hotplace-reply-form">
+										<label for="name" class="name"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${memberDTO.name} &nbsp;&nbsp;▷ </label>
+										<input type="hidden" name="h_code" value="${hotplaceDTO.h_code}" class="h_code"/>
+										<input type="hidden" name="email" value="${memberDTO.email}" class="email"/>
+										<input type="text" name="hr_content" class="hr_content" />
+										<input type="button" value="댓 글 달 기" class="replyBtn" onclick="checkReplyBtn();" />
+										<input type="hidden" value="취 소" class="resetBtn" onclick="changeReplyBtn();" />
+									</form>
+								</div>
+							</c:if>
+							
+							<!-- 댓글 목록창 -->
+							<div class="hotplace-reply-list">
+								<table>
+									<c:forEach items="${h_replyList}" var="h_replyDTO"> 
+										<tr class="item">
+											<td class="name"> ${h_replyDTO.name} &nbsp;&nbsp; | </td> 
+											<td class="content">
+												<div class="hr_date"> ${h_replyDTO.hr_date} </div>
+												<span class="hr_content"> 
+													${h_replyDTO.hr_content} 
+													<c:if test="${h_replyDTO.name eq memberDTO.name}">
+														<span class="replyBtnGroup" align="left">
+															<span class="updateReplyBtn"><button type="button" onclick="updateReply(${h_replyDTO.hr_idx}, '${h_replyDTO.hr_content}');">수정</button></span>
+															<span class="deleteReplyBtn"><button type="button" onclick="deleteReply(${h_replyDTO.hr_idx});">삭제</button></span>
+														</span>
+													</c:if>
+												</span>
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
+							</div>
+						</div>
 					</center>
 				</div>
 			</div>

@@ -23,18 +23,18 @@
 				<!-- info -->
 				<div class="info">
 					<!-- 로그인한 사용자가 없는 경우 -->
-					<c:if test="${dto eq null}">
+					<c:if test="${memberDTO eq null}">
 						<a href="member.do?method=signinF" id="signin">로그인</a> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=signupF" id="signup">회원가입</a>
 					</c:if>
 					<!-- 사용자가 로그인한 경우 -->
-					<c:if test="${dto ne null}">
-						${dto.email}님 접속
+					<c:if test="${memberDTO ne null}">
+						${memberDTO.name}님 접속
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="member.do?method=logout" id="logout">로그아웃</a>
 						<!-- 관리자가 로그인한 경우 -->
-						<c:if test="${dto.email eq 'admin'}">
+						<c:if test="${memberDTO.name eq 'admin'}">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="member.do?method=admin" id="admin">회원관리</a>
 						</c:if>
