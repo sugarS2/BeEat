@@ -47,10 +47,10 @@
 				<div class="search">
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-10 col-lg-8">
-							<form class="card card-sm border-0" >
+							<form class="card card-sm border-0" method="post" action="./search.do">
 								<div class="card-body row no-gutters align-items-center">
 									<div class="col">
-										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" name="searchText">
 									</div>
 									&nbsp;
 									<div class="col-auto">

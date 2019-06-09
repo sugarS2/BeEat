@@ -89,17 +89,19 @@
 							<ul class="hotplace-list">
 								<c:forEach items="${hotplaceList}" var="hotplaceDTO">
 									<!-- hotplace-list-item -->
-									<li class="hotplace-list-item">
-										<div class="item-img">
-											<img src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}" />
-										</div>
-										<div class="item-info">
-											<span class="h_name">${hotplaceDTO.h_name}</span> <span class="h_grade">(평점 : ${hotplaceDTO.h_grade})</span> <br/><br/>
-											<span class="loc_code">지역 : ${hotplaceDTO.loc_addr1} ${hotplaceDTO.loc_addr2}</span> <br/>
-											<span class="c_code">업종 : ${hotplaceDTO.c_name}</span> <br/><br/>
-											<span class="h_info">${hotplaceDTO.h_info}</span>
-										</div>
-									</li>
+									<a href="hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
+										<li class="hotplace-list-item">
+											<div class="item-img">
+												<img src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}" />
+											</div>
+											<div class="item-info">
+												<span class="h_name">${hotplaceDTO.h_name}</span> <span class="h_grade">(평점 : ${hotplaceDTO.h_grade})</span> <br/><br/>
+												<span class="loc_code">지역 : ${hotplaceDTO.loc_addr1} ${hotplaceDTO.loc_addr2}</span> <br/>
+												<span class="c_code">업종 : ${hotplaceDTO.c_name}</span> <br/>
+												<span class="h_info">${hotplaceDTO.h_info}</span>
+											</div>
+										</li>
+									</a>
 								</c:forEach>
 							</ul>
 						</div>

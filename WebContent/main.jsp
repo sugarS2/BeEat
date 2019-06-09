@@ -74,22 +74,24 @@
 			
 			<!-- content -->
 			<div id="content">
-				<!-- 최고 맛집 top3 부분 -->
-				<div class="top-list-wrap">
-					<div class="top-list-title">
-						<h2> "금주 top3 맛집" </h2>
-					</div>
-					<div class="top-list-imgs-wrap">
-						<ul>
-							<c:forEach items="${hotplaceList}" var="hotplaceDTO" > 
-								<li>
-									<a href="hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
-										<img src="imgs/hotplace/${hotplaceDTO.h_img1}" class="top-list-imgs">
-										<div class="h_name">${hotplaceDTO.h_name} (조회수 : ${hotplaceDTO.h_readnum})</div>
-									</a>
-								</li>
-							</c:forEach>
-						</ul>
+				<div class="content-border">
+					<!-- 최고 맛집 top3 부분 -->
+					<div class="top-list-wrap">
+						<div class="top-list-title">
+							<h2> "금주 top3 맛집" </h2>
+						</div>
+						<div class="top-list-imgs-wrap">
+							<ul>
+								<c:forEach items="${hotplaceList}" var="hotplaceDTO" > 
+									<li>
+										<a href="hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
+											<img src="imgs/hotplace/${hotplaceDTO.h_img1}" class="top-list-imgs">
+											<div class="h_name">${hotplaceDTO.h_name} (조회수 : ${hotplaceDTO.h_readnum})</div>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>

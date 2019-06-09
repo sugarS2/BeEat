@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+#content .content-border {
+	margin: 5px;
+	border: 10px solid #ffc000;
+}
+
 a {
 	color:#001d5d;
 	text-decoration: none;
@@ -13,7 +18,9 @@ a:hover{
 
 /************ content ************/
 #content .top-list-wrap .top-list-title h2{
-	padding-top:30px;
+	margin-top:30px;
+	/*background:#ffc000;*/
+	display:inline-block;
 }
 
 #content .top-list-wrap .top-list-imgs-wrap ul{
