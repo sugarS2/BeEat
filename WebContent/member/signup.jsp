@@ -8,6 +8,9 @@
 		<title>[BeEat] Sign Up</title>
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="../css/signup.css" />
+		<!-- 아이콘 지정 -->
+		<link rel="shortcut icon" href="../imgs/favicon.ico"/>
+		<link rel="icon" href="../imgs/favicon.ico"/>
 	</head>
 	<body>
 		<center>

@@ -7,8 +7,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="../css/signin.css" />		
 		<script src="http://code.jquery.com/jquery-1.3.2.min.js" ></script>
-		 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>	
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" ></script>	
 		<script src="../js/signin.js"></script>
+		
+		<!-- 아이콘 지정 -->
+		<link rel="shortcut icon" href="../imgs/favicon.ico"/>
+		<link rel="icon" href="../imgs/favicon.ico"/>
 	</head>
 	<body>
 		<center>

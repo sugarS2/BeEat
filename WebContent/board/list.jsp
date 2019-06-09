@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,beeat.board.model.BoardDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
+	<style>
+	td {text-align : left}
+	</style>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />		
-		<title>[BeEat] HotPlace List</title>
+		<title>[BeEat] Main</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="./css/layout.css?ver=1.2" />
-		<link rel="stylesheet" href="./css/hotplace/list.css?ver=1.2" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		<script src="./js/hotplace/list.js"></script>
+		<link rel="stylesheet" href="./css/layout.css" />
+		<link rel="stylesheet" href="./css/board/list.css" />
 		
 		<!-- 아이콘 지정 -->
 		<link rel="shortcut icon" href="./imgs/favicon.ico"/>
@@ -69,78 +69,58 @@
 					<ul>
 						<li> <a href="main.do">메인</a> </li>
 						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
-						<li> <a href="board.do?method=list">뽐내기</a> </li>
+						<li> <a href="board.do">뽐내기</a> </li>
 					</ul>
 				</div>
 			</div>
 			
 			<!-- content -->
 			<div id="content">
-				<div class="content-border">
-					<!-- content-header -->
-					<div class="hotplace-header">
-						<!-- content-title -->
-						<div class="hotplace-title">믿고 보는 맛집 리스트</div>
-						
-						<!-- <div class="hotplace-order">
-							<select name="orderList" class="orderList">
-								<option value="h_code">최신순</option>
-								<option value="h_readnum">조회순</option>
-								<option value="h_grade">별점순</option>
-							</select>
-						</div> -->
-						
-						<!-- 로그인한 경우에만 글쓰기 가능 -->
-						<c:if test="${memberDTO ne null}">
-							<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
-						</c:if>
-						
-						<!-- hotplace-category -->
-						<div class="hotplace-category">
-							<ul>
-								<li> 
-									<a href="hotplace.do?method=list" class="categoryList" id="0">전체</a> 
-								</li>
-								<c:forEach items="${categoryList}" var="categoryDTO">
-									<c:set value="${c_code==categoryDTO.c_code?'clicked':''}" var="check"/>
-									<li class="${check}"> 
-										<a href="hotplace.do?method=findByCategory&c_code=${categoryDTO.c_code}" id="${categoryDTO.c_code}">${categoryDTO.c_name}</a>
-									</li>
-								</c:forEach>
-							</ul>
-						</div>
-					</div> <!-- content-header 끝 -->
+				<center>
+					<h1>당신의 맛집을 자랑하세요!</h1>
 					
-					<!-- hotplace-list -->
-					<div class="hotplace-list">
-							<ul>
-								<c:forEach items="${hotplaceList}" var="hotplaceDTO">
-									<li>
-										<a href="./hotplace.do?method=content&h_code=${hotplaceDTO.h_code}">
-											<div class="list-item">
-												<img class="list-item-img" src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}">
-												<div class="list-item-text">${hotplaceDTO.h_name}</div>
-											</div>
-										</a>
-									</li>
-								</c:forEach>
-							</ul>
-					</div> <!-- hotplace-list 끝 -->
+					<c:if test="${memberDTO ne null}">
+	                	<h3><a href="board.do?method=insertF">글쓰기</a></h3>
+	                </c:if>
 					
-				</div>
+					
+					<!-- list null -->
+					<c:if test="${boardList.size() == 0}">
+				   <table>
+				   <tr>
+				   <td>데이터가 하나도 없음</td>
+				   </tr>
+					</table>
+					 </c:if>				
+					
+					<!-- list not null -->
+					<c:forEach items="${boardList}" var="boardList">
+					<table>
+					  <tr>
+						<td rowspan="3">
+							<a href="board.do?method=content&b_code=${boardList.b_code}">
+								<img src="./imgs/board/${boardList.b_img1}" alt="${boardList.b_img1}" 
+								width="400" height="300">
+							</a>
+						</td>
+						<td>${boardList.b_title}</td>
+					  </tr>
+					  <tr>
+						<td>${boardList.email}</td>
+					  </tr>
+					  <tr>
+						<td>${boardList.b_content}</td>
+					  </tr>
+					</table>
+					<hr style="border: solid 1px black;">
+					  </c:forEach>
+					
+				</center>
 			</div>
-			
 			<!-- footer -->
 			<div id="footer">
-				<div class="footer-info">
-					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
-					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
-					<br/>
-					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
-				</div>
+				푸터
 			</div>
 		</div>
-		
-		
 	</body>
 </html>

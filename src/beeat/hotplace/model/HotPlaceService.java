@@ -21,6 +21,11 @@ public class HotPlaceService {
 	public ArrayList<HotPlaceDTO> findTop3ByReadNum(){
 		return hotplaceDAO.findTop3ByReadNum();
 	}
+	
+	// findBySearchText
+	public ArrayList<HotPlaceDTO> findBySearchText(String searchText){
+		return hotplaceDAO.findBySearchText(searchText);
+	}
 	// insert 
 	public void insert(HotPlaceDTO dto) {
 		hotplaceDAO.insert(dto);

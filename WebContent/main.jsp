@@ -11,6 +11,10 @@
 		<link href="https://fonts.googleapis.com/css?family=Jua|Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/layout.css" />
 		<link rel="stylesheet" href="css/main.css" />
+		
+		<!-- 아이콘 지정 -->
+		<link rel="shortcut icon" href="./imgs/favicon.ico"/>
+		<link rel="icon" href="./imgs/favicon.ico"/>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -44,10 +48,10 @@
 				<div class="search">
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-10 col-lg-8">
-							<form class="card card-sm border-0" >
+							<form class="card card-sm border-0" method="post" action="search.do">
 								<div class="card-body row no-gutters align-items-center">
 									<div class="col">
-										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" name="searchText">
 									</div>
 									&nbsp;
 									<div class="col-auto">
@@ -63,7 +67,7 @@
 					<ul>
 						<li> <a href="main.do">메인</a> </li>
 						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
-						<li> <a href="#">뽐내기</a> </li>
+						<li> <a href="board.do?method=list">뽐내기</a> </li>
 					</ul>
 				</div>
 			</div>

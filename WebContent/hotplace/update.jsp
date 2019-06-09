@@ -14,6 +14,10 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> 
 		<script src="./js/hotplace/update.js"></script>
+		
+		<!-- 아이콘 지정 -->
+		<link rel="shortcut icon" href="./imgs/favicon.ico"/>
+		<link rel="icon" href="./imgs/favicon.ico"/>
 	</head>
 	<body>
 		<div id="wrapper">
@@ -66,7 +70,7 @@
 					<ul>
 						<li> <a href="./main.do">메인</a> </li>
 						<li> <a href="./hotplace.do?method=list">맛집 찾기</a> </li>
-						<li> <a href="#">뽐내기</a> </li>
+						<li> <a href="./board.do?method=list">뽐내기</a> </li>
 					</ul>
 				</div>
 			</div>
