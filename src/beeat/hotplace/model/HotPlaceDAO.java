@@ -116,7 +116,10 @@ class HotPlaceDAO {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(HotPlaceSQL.FIND_BY_SEARCHTEXT);
-			
+			pstmt.setString(1, searchText);
+			pstmt.setString(2, searchText);
+			pstmt.setString(3, searchText);
+			pstmt.setString(4, searchText);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int h_code = rs.getInt("h_code");
@@ -135,7 +138,11 @@ class HotPlaceDAO {
 				int h_readnum = rs.getInt("h_readnum");
 				float h_grade = rs.getFloat("h_grade");
 				String email = rs.getString("email");
-				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email);
+				String loc_addr1 = rs.getString("loc_addr1");
+				String loc_addr2 = rs.getString("loc_addr2");
+				String c_name = rs.getString("c_name");
+				String name = rs.getString("name");
+				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name, name);
 				list.add(dto);
 			}
 			return list;

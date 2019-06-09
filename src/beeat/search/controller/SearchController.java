@@ -17,6 +17,7 @@ public class SearchController extends HttpServlet {
 		String searchText = request.getParameter("searchText");
 		HotPlaceService hotplaceService = HotPlaceService.getInstance();
 		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findBySearchText(searchText);
+		request.setAttribute("hotplaceList", hotplaceList);
 		RequestDispatcher rd = request.getRequestDispatcher("search/list.jsp");
 		rd.forward(request, response);
 	}

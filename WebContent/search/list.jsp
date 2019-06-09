@@ -87,39 +87,20 @@
 						</div>
 						<div class="hotplace-content">
 							<ul class="hotplace-list">
-								<!-- hotplace-list-item -->
-								<li class="hotplace-list-item">
-									<div class="item-img">
-										<img src="./imgs/hotplace/가츠벤또_img1.png" alt="가츠벤또_img1.png" />
-									</div>
-									<div class="item-info">
-										<span class="h_name">글제목</span> <span class="h_grade">(평점 : )</span> <br/><br/>
-										<span class="loc_code">지역 : </span> <span class="c_code">업종 : </span> <br/><br/>
-										<span class="h_info">글 설명aasasdasdasdsadasdasdasdasdsddddddd</span>
-									</div>
-								</li>
-								<!-- hotplace-list-item -->
-								<li class="hotplace-list-item">
-									<div class="item-img">
-										<img src="./imgs/hotplace/가츠벤또_img2.jpg" alt="가츠벤또_img2.jpg" />
-									</div>
-									<div class="item-info">
-										<span class="h_name">글제목</span> <span class="h_grade">(평점 : )</span> <br/><br/>
-										<span class="loc_code">지역 : </span> <span class="c_code">업종 : </span> <br/><br/>
-										<span class="h_info">글 설명</span>
-									</div>
-								</li>
-								<!-- hotplace-list-item -->
-								<li class="hotplace-list-item">
-									<div class="item-img">
-										<img src="./imgs/hotplace/가츠벤또_img3.jpg" alt="가츠벤또_img3.jpg" />
-									</div>
-									<div class="item-info">
-										<span class="h_name">글제목</span> <span class="h_grade">(평점 : )</span> <br/><br/>
-										<span class="loc_code">지역 : </span> <span class="c_code">업종 : </span> <br/><br/>
-										<span class="h_info">글 설명</span>
-									</div>
-								</li>
+								<c:forEach items="${hotplaceList}" var="hotplaceDTO">
+									<!-- hotplace-list-item -->
+									<li class="hotplace-list-item">
+										<div class="item-img">
+											<img src="./imgs/hotplace/${hotplaceDTO.h_img1}" alt="${hotplaceDTO.h_img1}" />
+										</div>
+										<div class="item-info">
+											<span class="h_name">${hotplaceDTO.h_name}</span> <span class="h_grade">(평점 : ${hotplaceDTO.h_grade})</span> <br/><br/>
+											<span class="loc_code">지역 : ${hotplaceDTO.loc_addr1} ${hotplaceDTO.loc_addr2}</span> <br/>
+											<span class="c_code">업종 : ${hotplaceDTO.c_name}</span> <br/><br/>
+											<span class="h_info">${hotplaceDTO.h_info}</span>
+										</div>
+									</li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div> <!-- hotplace-wrapper 끝 -->
