@@ -21,7 +21,7 @@
 			<div id="header">
 				<!-- logo -->
 				<div class="logo">
-					<a href="./main.do">BeEat</a>
+					<a href="main.do"><img src="./imgs/logo.png" /></a>
 				</div>
 				<!-- info -->
 				<div class="info">
@@ -172,7 +172,12 @@
 			
 			<!-- footer -->
 			<div id="footer">
-				푸터
+				<div class="footer-info">
+					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
+					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
+					<br/>
+					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+				</div>
 			</div>
 		</div>
 		

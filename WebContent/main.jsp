@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />		
 		<title>[BeEat] Main</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Jua|Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/layout.css" />
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
@@ -18,7 +18,7 @@
 			<div id="header">
 				<!-- logo -->
 				<div class="logo">
-					<a href="main.do">BeEat</a>
+					<a href="main.do"><img src="./imgs/logo.png" /></a>
 				</div>
 				<!-- info -->
 				<div class="info">
@@ -92,7 +92,12 @@
 			
 			<!-- footer -->
 			<div id="footer">
-				푸터
+				<div class="footer-info">
+					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
+					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
+					<br/>
+					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+				</div>
 			</div>
 		</div>
 	</body>

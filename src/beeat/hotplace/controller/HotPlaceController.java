@@ -136,6 +136,7 @@ public class HotPlaceController extends HttpServlet {
 		if(viewCookie==null) {
 			Cookie newCookie = new Cookie("VIEWCOOKIE", "|"+h_code+"|");
 			response.addCookie(newCookie);
+			hotplaceService.updateReadNum(h_code); // 조회수 증가
 		}else {
 			String value = viewCookie.getValue();
 			if(! value.contains("|"+h_code+"|")) {

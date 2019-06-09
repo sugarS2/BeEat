@@ -8,7 +8,7 @@ html,body{
 #wrapper{
 	position:relative;
 	min-height:100%;
-	font-family: 'Do Hyeon', 'Dokdo', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
+	font-family:'Jua', 'Do Hyeon', 'Dokdo', 'East Sea Dokdo', 'Gaegu', 'Poor Story', 'Gamja Flower';
 }
 
 /************ header ************/
@@ -16,7 +16,7 @@ html,body{
 	position:fixed;
 	top:0; left:0;
 	width:100%;
-	height:210px; /* height값 변경 시 #content의 padding-top도 변경 */ 
+	height:240px; /* height값 변경 시 #content의 padding-top도 변경 */ 
     border-bottom: 1px solid #ddd;
     background:white; 
     z-index:1;
@@ -31,7 +31,10 @@ html,body{
 	color:#ffc000;
 	text-decoration: none;
 }
-
+#header .logo a img{
+	width:200px;
+	height:120px;
+}
 #header .info{
 	float:right;
 	display:inline-block;
@@ -40,10 +43,10 @@ html,body{
 #header .info a{
 	font-size:20px;
 }
+
 #header .info:after{
 	clear:both;
 }
-
 #header .search{
 	top:50%;
 }
@@ -69,13 +72,25 @@ html,body{
 /************ content ************/
 #content {
 	text-align:center;
-    padding-top:210px;
+    padding-top:240px; /* height값 변경 시 #content의 padding-top도 변경 */ 
 }
 
 /************ footer ************/
 #footer {
     bottom:0;
     width:100%;
-    height:70px;   
+    height:100px;   
     background:#ccc;
+    text-align: center;
+}
+#footer .footer-info{
+	padding-top: 10px;
+    padding-left: 100px;
+    height:100%;
+}
+#footer .projectName{
+	font-size:40px;
+}
+#footer .projectInfo {
+    vertical-align: super;
 }

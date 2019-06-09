@@ -16,7 +16,7 @@
 				<div class="loginWrapper">
 					<div class="logo">
 						<a href="../main.do">
-							<img src="../imgs/BeEat_logo.png" />
+							<img src="../imgs/logo.png" />
 						</a>
 					</div>
 					<form name="signin" id="validate_form" method="post">

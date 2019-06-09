@@ -2,7 +2,7 @@ package beeat.hotplace.model;
 
 public class HotPlaceSQL {
 	static final String FIND_ALL = "SELECT * FROM HOTPLACE";
-	static final String FIND_TOP3_BY_READNUM = "SELECT * FROM HOTPLACE WHERE ROWNUM<=3 ORDER BY h_readnum desc";
+	static final String FIND_TOP3_BY_READNUM = "SELECT * FROM (SELECT * FROM HOTPLACE ORDER BY h_readnum desc) WHERE ROWNUM<=3";
 	static final String INSERT = "INSERT INTO HOTPLACE VALUES(HOTPLACE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,SYSDATE,?,?,?)";
 	static final String FIND_BY_CODE = "SELECT h.*, l.loc_addr1, l.loc_addr2, c.c_name, m.name "
 									+ "FROM HOTPLACE h "
