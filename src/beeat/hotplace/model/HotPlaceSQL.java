@@ -3,6 +3,7 @@ package beeat.hotplace.model;
 public class HotPlaceSQL {
 	static final String FIND_ALL = "SELECT * FROM HOTPLACE";
 	static final String FIND_TOP3_BY_READNUM = "SELECT * FROM (SELECT * FROM HOTPLACE ORDER BY h_readnum desc) WHERE ROWNUM<=3";
+	
 	static final String FIND_BY_SEARCHTEXT =  "SELECT * "
 											+ "FROM (SELECT h.*, l.loc_addr1, l.loc_addr2, c.c_name, m.name "
 											+ "      FROM HOTPLACE h "
@@ -15,7 +16,21 @@ public class HotPlaceSQL {
 											+ "            c.c_name LIKE '%'||?||'%' "
 											+ "      ORDER BY h.h_code DESC "
 											+ "		) "
-											+ "WHERE ROWNUM<=4 ";
+											+ "WHERE ROWNUM<=? ";
+	
+	static final String COUNT_BY_SEARCHTEXT = "SELECT COUNT(*) "
+											+ "FROM (SELECT h.*, l.loc_addr1, l.loc_addr2, c.c_name, m.name "
+											+ "      FROM HOTPLACE h "
+											+ "			   LEFT JOIN MEMBER m ON h.email=m.email "
+											+ "            LEFT JOIN LOC l ON h.loc_code=l.loc_code "
+											+ "            LEFT JOIN CATEGORY c ON h.c_code=c.c_code "
+											+ "      WHERE "
+											+ "            h.h_name LIKE '%'||?||'%' OR "
+											+ "            l.loc_addr1 LIKE '%'||?||'%' OR l.loc_addr2 LIKE '%'||?||'%' OR"
+											+ "            c.c_name LIKE '%'||?||'%' "
+											+ "      ORDER BY h.h_code DESC "
+											+ "		) "
+											+ "";
 	static final String INSERT = "INSERT INTO HOTPLACE VALUES(HOTPLACE_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,SYSDATE,?,?,?)";
 	static final String FIND_BY_CODE = "SELECT h.*, l.loc_addr1, l.loc_addr2, c.c_name, m.name "
 									+ "FROM HOTPLACE h "

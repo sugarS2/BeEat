@@ -64,14 +64,26 @@ public class SearchController extends HttpServlet {
 	
 	// search
 	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchText = request.getParameter("searchText");
-		System.out.println(searchText);
 		HotPlaceService hotplaceService = HotPlaceService.getInstance();
-		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findBySearchText(searchText);
 		BoardService boardService = BoardService.getInstance();
+		
+		String searchText = request.getParameter("searchText");
+		String numStr = request.getParameter("num");
+		
+		ArrayList<HotPlaceDTO> hotplaceList=null;
+		if(numStr!=null) {
+			int num = Integer.parseInt(numStr);
+			hotplaceList = hotplaceService.findBySearchText(searchText, num);
+		}else {
+			hotplaceList = hotplaceService.findBySearchText(searchText);
+		}
+		int hotplaceCount = hotplaceService.countBySearchText(searchText);
+		
 		ArrayList<BoardDTO> boardList = boardService.search(searchText);
 		
+		request.setAttribute("searchText", searchText);
 		request.setAttribute("hotplaceList", hotplaceList);
+		request.setAttribute("hotplaceCount", hotplaceCount);
 		request.setAttribute("boardSearch", boardList);
 		RequestDispatcher rd = request.getRequestDispatcher("search/list.jsp");
 		rd.forward(request, response);

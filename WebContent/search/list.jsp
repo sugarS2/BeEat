@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +21,9 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="./js/search/search.js"></script>
+		
+		<!-- 더보기 기능 -->
+		<script src="./js/search/list.js"></script>
 		
 		<!-- 아이콘 지정 -->
 		<link rel="shortcut icon" href="./imgs/favicon.ico"/>
@@ -110,6 +115,27 @@
 									</a>
 								</c:forEach>
 							</ul>
+							
+							<div class="hotplace-more-view"> 
+								<div class="searchText" style="display:none;">${searchText}</div>
+								<c:if test="${hotplaceCount%4 eq 0}">
+									<c:if test="${param.num eq null}">
+										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${hotplaceCount/4} </span> ) 
+									</c:if>
+									<c:if test="${param.num ne null}">
+										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${hotplaceCount/4} </span> ) 
+									</c:if>
+								</c:if>
+								<c:if test="${hotplaceCount%4 ne 0}">
+									<fmt:formatNumber value="${hotplaceCount/4}" var="hotplaceCount" pattern="0"/>
+									<c:if test="${param.num eq null}">
+										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${hotplaceCount+1} </span> ) 
+									</c:if>
+									<c:if test="${param.num ne null}">
+										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${hotplaceCount+1} </span> ) 
+									</c:if>
+								</c:if>
+							</div>
 						</div>
 					</div> <!-- hotplace-wrapper 끝 -->
 					

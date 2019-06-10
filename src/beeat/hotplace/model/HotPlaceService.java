@@ -22,10 +22,20 @@ public class HotPlaceService {
 		return hotplaceDAO.findTop3ByReadNum();
 	}
 	
-	// findBySearchText
+	// findBySearchText(String searchText)
 	public ArrayList<HotPlaceDTO> findBySearchText(String searchText){
 		return hotplaceDAO.findBySearchText(searchText);
 	}
+	
+	// findBySearchText(String searchText, int num)
+	public ArrayList<HotPlaceDTO> findBySearchText(String searchText, int num){
+		return hotplaceDAO.findBySearchText(searchText, num);
+	}
+	
+	public int countBySearchText(String searchText) {
+		return hotplaceDAO.countBySearchText(searchText);
+	}
+	
 	// insert 
 	public void insert(HotPlaceDTO dto) {
 		hotplaceDAO.insert(dto);

@@ -110,6 +110,7 @@ class HotPlaceDAO {
 	}
 	
 	
+	// findBySearchText(String searchText)
 	ArrayList<HotPlaceDTO> findBySearchText(String searchText){
 		ArrayList<HotPlaceDTO> list = new ArrayList<HotPlaceDTO>();
 		Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
@@ -120,6 +121,7 @@ class HotPlaceDAO {
 			pstmt.setString(2, searchText);
 			pstmt.setString(3, searchText);
 			pstmt.setString(4, searchText);
+			pstmt.setInt(5, 4);  //?
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int h_code = rs.getInt("h_code");
@@ -149,6 +151,83 @@ class HotPlaceDAO {
 		}catch(SQLException se) {
 			System.out.println("[SELECT문 오류] "+se);
 			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
+	
+	
+	// findBySearchText(String searchText, int num)
+	ArrayList<HotPlaceDTO> findBySearchText(String searchText, int num){
+		ArrayList<HotPlaceDTO> list = new ArrayList<HotPlaceDTO>();
+		Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.FIND_BY_SEARCHTEXT);
+			pstmt.setString(1, searchText);
+			pstmt.setString(2, searchText);
+			pstmt.setString(3, searchText);
+			pstmt.setString(4, searchText);
+			pstmt.setInt(5, num*4);  // 4, 8, 12..
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int h_code = rs.getInt("h_code");
+				String h_name = rs.getString("h_name");
+				int c_code = rs.getInt("c_code");
+				int loc_code = rs.getInt("loc_code");
+				String h_address = rs.getString("h_address");
+				String h_info = rs.getString("h_info");
+				String h_tel = rs.getString("h_tel");
+				String h_time = rs.getString("h_time");
+				String h_menu = rs.getString("h_menu");
+				String h_img1 = rs.getString("h_img1");
+				String h_img2 = rs.getString("h_img2");
+				String h_img3 = rs.getString("h_img3");
+				java.sql.Date h_date = rs.getDate("h_date");
+				int h_readnum = rs.getInt("h_readnum");
+				float h_grade = rs.getFloat("h_grade");
+				String email = rs.getString("email");
+				String loc_addr1 = rs.getString("loc_addr1");
+				String loc_addr2 = rs.getString("loc_addr2");
+				String c_name = rs.getString("c_name");
+				String name = rs.getString("name");
+				HotPlaceDTO dto = new HotPlaceDTO(h_code, h_name, c_code, loc_code, h_address, h_info, h_tel, h_time, h_menu, h_img1, h_img2, h_img3, h_date, h_readnum, h_grade, email, loc_addr1, loc_addr2, c_name, name);
+				list.add(dto);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println("[SELECT문 오류] "+se);
+			return null;
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}catch(SQLException se) {}
+		}
+	}
+	
+	
+	// countBySearchText
+	int countBySearchText(String searchText){
+		Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(HotPlaceSQL.COUNT_BY_SEARCHTEXT);
+			pstmt.setString(1, searchText);
+			pstmt.setString(2, searchText);
+			pstmt.setString(3, searchText);
+			pstmt.setString(4, searchText);
+			rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		}catch(SQLException se) {
+			System.out.println("[SELECT문 오류] "+se);
+			return -1;
 		}finally {
 			try {
 				if(rs!=null) rs.close();
