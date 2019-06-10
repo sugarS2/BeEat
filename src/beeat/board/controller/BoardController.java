@@ -74,7 +74,9 @@ public class BoardController extends HttpServlet {
 	//insert
 	private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		BoardService service = BoardService.getInstance();
-		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/board";
+		//String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/board";
+		ServletContext sc = getServletContext();
+		String saveDirectory = sc.getRealPath("/imgs/board"); // 저장될 경로(이클립스 상 절대경로)
 		System.out.println("saveDirectory : " + saveDirectory);
 		int maxPostSize = 5*1028*1028;
 		String encoding = "utf-8";
@@ -129,7 +131,9 @@ public class BoardController extends HttpServlet {
 	//update
 	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardService service = BoardService.getInstance();
-		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/board";
+		ServletContext sc = getServletContext();
+		String saveDirectory = sc.getRealPath("/imgs/board"); // 저장될 경로(이클립스 상 절대경로)
+		//String saveDirectory  "C:/KSW/workspace/BeEat/WebContent/imgs/board";
 		System.out.println("saveDirectory : " + saveDirectory);
 		int maxPostSize = 5*1028*1028;
 		String encoding = "utf-8";

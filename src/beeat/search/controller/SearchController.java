@@ -1,6 +1,7 @@
 package beeat.search.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -8,14 +9,63 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+
 import beeat.hotplace.model.*;
 import beeat.board.model.*;
+import beeat.category.model.CategoryDTO;
+import beeat.category.model.CategoryService;
+
+
 @WebServlet("/search.do")
 public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String method = request.getParameter("method");
+		if(method!=null) {
+			if(method.equals("find")) {
+				find(request, response);
+			}else if(method.equals("search")) {
+				search(request, response);
+			}
+		}
+			
+		
+	}
+
+	// find
+	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
 		String searchText = request.getParameter("searchText");
+		HotPlaceService hotplaceService = HotPlaceService.getInstance();
+		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findBySearchText(searchText);
+		
+		
+		JSONArray array = new JSONArray();
+		JSONObject obj=null;
+		for(int i=0; i<hotplaceList.size(); i++) {
+			obj = new JSONObject();
+			obj.put("h_name", hotplaceList.get(i).getH_name());
+			obj.put("c_name", hotplaceList.get(i).getC_name());
+			obj.put("loc_addr1", hotplaceList.get(i).getLoc_addr1());
+			obj.put("loc_addr2", hotplaceList.get(i).getLoc_addr2());
+			array.add(obj);
+			//array.add(hotplaceList.get(i));
+		}
+		PrintWriter pw = response.getWriter();
+		pw.print(array);
+		pw.flush();
+		pw.close();
+	}	
+	
+	
+	// search
+	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchText = request.getParameter("searchText");
+		System.out.println(searchText);
 		HotPlaceService hotplaceService = HotPlaceService.getInstance();
 		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findBySearchText(searchText);
 		BoardService boardService = BoardService.getInstance();

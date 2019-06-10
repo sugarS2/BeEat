@@ -14,6 +14,12 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<!-- <script src="./js/hotplace/list.js"></script> -->
 		
+		<!-- 검색기능 추가 -->
+    	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="./js/search/search.js"></script>
+		
 		<!-- 아이콘 지정 -->
 		<link rel="shortcut icon" href="./imgs/favicon.ico"/>
 		<link rel="icon" href="./imgs/favicon.ico"/>
@@ -49,15 +55,15 @@
 				<!-- search -->
 				<div class="search">
 					<div class="row justify-content-center">
-						<div class="col-12 col-md-10 col-lg-8">
-							<form class="card card-sm border-0" >
+						<div class="col-8 col-md-8 col-lg-8">
+							<form class="card card-sm border-0" method="post" action="search.do?method=search" onkeypress="if(window.event.keyCode == 13){javascript:search(this.value);}">
 								<div class="card-body row no-gutters align-items-center">
 									<div class="col">
-										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
+										<input id="searchText" class="form-control form-control-lg form-control-borderless" type="text" placeholder="   업종, 식당 또는 주소 " name="searchText">
 									</div>
 									&nbsp;
 									<div class="col-auto">
-										<button class="btn btn-lg btn-warning" type="submit">Search</button>
+										<button class="btn btn-lg btn-warning" type="submit">&nbsp; 검 색  &nbsp;</button>
 									</div>
 								</div>
 							</form>
@@ -70,7 +76,7 @@
 						<li> <a href="main.do">메인</a> </li>
 						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
 						<li> <a href="board.do?method=list">뽐내기</a> </li>
-						<li> <a window.location.href="naver.com">EAT딜</a> </li>
+						<li> <a href="https://www.mangoplate.com/eat_deals" target="_blank">EAT딜(예정)</a> </li>
 					</ul>
 				</div>
 			</div>

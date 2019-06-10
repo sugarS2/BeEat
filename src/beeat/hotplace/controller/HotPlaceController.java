@@ -89,14 +89,16 @@ public class HotPlaceController extends HttpServlet {
 	}
 	// insert
 	private void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ServletContext sc = getServletContext();
-		//String saveDirectory = sc.getRealPath("/imgs/hotplace"); // 저장될 경로(이클립스 상 절대경로)
-		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/hotplace";
+		ServletContext sc = getServletContext();
+		String saveDirectory = sc.getRealPath("/imgs/hotplace"); // 저장될 경로(이클립스 상 절대경로)
+		System.out.println("saveDirectory : " + saveDirectory);
+		//String saveDirectory2 = "C:/KSW/workspace/BeEat/WebContent/imgs/hotplace";
 		int maxPostSize = 5*1024*1024; // 파일 최대 사이즈 5MB로 지정
 		String encoding = "utf-8";
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
 		
 		MultipartRequest multi = new  MultipartRequest(request, saveDirectory, maxPostSize, encoding, policy);
+		//MultipartRequest multi2 = new  MultipartRequest(request, saveDirectory2, maxPostSize, encoding, policy);
 		
 		String h_name = multi.getParameter("h_name");
 		int c_code = Integer.parseInt(multi.getParameter("c_code"));
@@ -183,12 +185,15 @@ public class HotPlaceController extends HttpServlet {
 	}
 	// update
 	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String saveDirectory = "C:/KSW/workspace/BeEat/WebContent/imgs/hotplace";
+		ServletContext sc = getServletContext();
+		String saveDirectory = sc.getRealPath("/imgs/hotplace"); // 저장될 경로(이클립스 상 절대경로)
+		//String saveDirectory2 = "C:/KSW/workspace/BeEat/WebContent/imgs/hotplace";
 		int maxPostSize = 5*1024*1024; // 파일 최대 사이즈 5MB로 지정
 		String encoding = "utf-8";
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
 		
 		MultipartRequest multi = new  MultipartRequest(request, saveDirectory, maxPostSize, encoding, policy);
+		//MultipartRequest multi2 = new  MultipartRequest(request, saveDirectory2, maxPostSize, encoding, policy);
 		
 		int h_code = Integer.parseInt(multi.getParameter("h_code"));
 		String h_name = multi.getParameter("h_name");
