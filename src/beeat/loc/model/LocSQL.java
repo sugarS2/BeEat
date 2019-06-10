@@ -1,4 +1,4 @@
-package beeat.hotplace.model;
+package beeat.loc.model;
 
 public class LocSQL {
 	static final String FIND_ALL = "SELECT DISTINCT * FROM LOC";

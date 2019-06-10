@@ -1,4 +1,4 @@
-package beeat.hotplace.model;
+package beeat.category.model;
 
 public class CategoryDTO {
 	private int c_code;

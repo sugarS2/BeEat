@@ -15,11 +15,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
-import beeat.board.model.B_ReplyDTO;
-import beeat.board.model.BoardDTO;
-import beeat.board.model.BoardService;
-import beeat.hotplace.model.CategoryDTO;
-import beeat.hotplace.model.CategoryService;
+import beeat.board.model.*;
+
 
 @WebServlet("/board.do")
 public class BoardController extends HttpServlet {

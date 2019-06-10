@@ -9,8 +9,8 @@
 		<title>[BeEat] Search List</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Dokdo|East+Sea+Dokdo|Gaegu|Gamja+Flower|Poor+Story&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="./css/layout.css?ver=1.2" />
-		<link rel="stylesheet" href="./css/search/list.css?ver=1.2" />
+		<link rel="stylesheet" href="./css/layout.css?ver=1.3" />
+		<link rel="stylesheet" href="./css/search/list.css?ver=1.3" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<!-- <script src="./js/hotplace/list.js"></script> -->
 		
@@ -70,7 +70,7 @@
 						<li> <a href="main.do">메인</a> </li>
 						<li> <a href="hotplace.do?method=list">맛집 찾기</a> </li>
 						<li> <a href="board.do?method=list">뽐내기</a> </li>
-						<li> <a href="main.do">EAT딜</a> </li>
+						<li> <a window.location.href="naver.com">EAT딜</a> </li>
 					</ul>
 				</div>
 			</div>
@@ -112,6 +112,25 @@
 						<!-- board-header -->
 						<div class="board-header">
 							<h1> BOARD LIST</h1>
+						</div>
+							<div class="board-content">
+							<ul class="board-list">
+								<c:forEach items="${boardSearch}" var="boardDTO">
+									<!-- board-list-item -->
+									<a href="board.do?method=content&b_code=${boardDTO.b_code}">
+										<li class="board-list-item">
+											<div class="item-img">
+												<img src="./imgs/board/${boardDTO.b_img1}" alt="${boardDTO.b_img1}" />
+											</div>
+											<div class="item-info">
+												<span class="b_title">${boardDTO.b_title}</span><br/><br/>
+												<span class="c_code">업종 : ${boardDTO.c_name}</span> <br/>
+												<span class="b_content">${boardDTO.b_content}</span>
+											</div>
+										</li>
+									</a>
+								</c:forEach>
+							</ul>
 						</div>
 					</div> <!-- board-wrapper 끝 -->
 					

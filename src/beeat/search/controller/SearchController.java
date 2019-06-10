@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import beeat.hotplace.model.*;
+import beeat.board.model.*;
 @WebServlet("/search.do")
 public class SearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,7 +18,11 @@ public class SearchController extends HttpServlet {
 		String searchText = request.getParameter("searchText");
 		HotPlaceService hotplaceService = HotPlaceService.getInstance();
 		ArrayList<HotPlaceDTO> hotplaceList = hotplaceService.findBySearchText(searchText);
+		BoardService boardService = BoardService.getInstance();
+		ArrayList<BoardDTO> boardList = boardService.search(searchText);
+		
 		request.setAttribute("hotplaceList", hotplaceList);
+		request.setAttribute("boardSearch", boardList);
 		RequestDispatcher rd = request.getRequestDispatcher("search/list.jsp");
 		rd.forward(request, response);
 	}

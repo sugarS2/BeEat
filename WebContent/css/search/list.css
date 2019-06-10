@@ -72,3 +72,36 @@ a:hover{
 .board-header{
 	margin:20px;
 }
+.board-list {
+	list-style-type:none;
+	width:100%;
+}
+.board-list .board-list-item{
+	margin:30px 70px;
+	/* display:inline-block; */
+	width:45%;
+}
+.board-list .board-list-item div{
+	display:inline-block;
+	vertical-align: middle;
+}
+.board-list .board-list-item img{
+	float:left;
+	width :250px;
+	height:250px;
+	
+	
+}
+.board-list .board-list-item .item-info {
+    float:right;
+    width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.board-list .board-list-item .item-info .b_title{
+	font-size:25px;
+	background:#ffc000;
+}
+.board-list .board-list-item .item-info .b_info{
+	color:#808080;
+}

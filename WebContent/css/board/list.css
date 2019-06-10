@@ -1,8 +1,91 @@
 @charset "UTF-8";
 
 /************ content ************/
-#content {
-	margin-top: 50px;
-	margin-right: 300px;
-	margin-left: 300px;
+#content .content-border {
+	margin: 5px;
+	border: 10px solid #ffc000;
+}
+
+a {
+	color:#001d5d;
+	text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:#808080;
+}
+
+
+/******** board-title ********/
+.board-title {
+	margin-top:20px;
+	color: #ffc000;
+	font-size: 45px;
+}
+
+.board-insert{  /* 글쓰기 버튼 */
+	text-align:right;
+	padding-right:100px;
+	font-size:20px;
+	vertical-align: middle;
+}
+.board-insert a{  
+	border: 2px solid #001d5d;
+	background:#001d5d;
+	border-radius: 7px;
+	padding: 10px 10px;
+	color:white;
+}
+.board-insert a:hover{  
+	text-decoration:none;
+}
+.board-insert a .plus{  
+	font-size:40px;
+	vertical-align: sub;
+}
+
+
+/******** boardList ********/
+.boardList {
+	text-align:left;
+	margin:100px;
+	margin-top:30px;
+	margin-left:200px;
+}
+.boardList ul {
+	list-style-type:none;
+}
+
+/*** .item-wrapper ***/
+.item-wrapper div {
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.item-wrapper img { 
+	width:300px;
+	height:200px;
+	margin-right:70px;
+	
+}
+
+.item-wrapper .item-info-wrapper {
+	display:inline-block;
+}
+.item-wrapper .b_title {
+	width:100%;
+	font-size:30px;
+	color:#000080;
+	border-bottom:2px dotted #000080;
+}
+
+.item-wrapper .b_content {
+	font-size:20px;
+	/* border-bottom:2px dotted #efefef; */
+}
+
+.item-wrapper .name , .b_date {
+	color:gray;
 }

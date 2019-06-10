@@ -44,4 +44,7 @@ public class BoardService {
 	public B_ReplyDTO reContent(int br_idx) {
 		return dao.reContent(br_idx);
 	}
+	public ArrayList<BoardDTO> search(String keyword) {
+        return dao.search(keyword);
+    }
 }

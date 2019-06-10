@@ -1,4 +1,4 @@
-package beeat.hotplace.model;
+package beeat.category.model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,10 +11,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-class LocDAO {
+class CategoryDAO {
 	private DataSource ds;
 	
-	LocDAO(){
+	CategoryDAO(){
 		try {
 			Context initContext = new InitialContext();
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
@@ -25,18 +25,18 @@ class LocDAO {
 	
 	
 	// findAll
-	ArrayList<LocDTO> findAll() {
-		ArrayList<LocDTO> list = new ArrayList<LocDTO>();
-		Connection conn = null; Statement stmt = null; ResultSet rs = null;
+	ArrayList<CategoryDTO> findAll() {
+		ArrayList<CategoryDTO> list = new ArrayList<CategoryDTO>();
+		Connection conn = null; Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			conn = ds.getConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(LocSQL.FIND_ALL);
+			rs = stmt.executeQuery(CategorySQL.FIND_ALL);
 			while(rs.next()) {
-				int loc_code = rs.getInt(1);
-				String loc_addr1 = rs.getString(2);
-				String loc_addr2 = rs.getString(3);
-				LocDTO dto = new LocDTO(loc_code, loc_addr1, loc_addr2);
+				int c_code = rs.getInt(1);
+				String c_name = rs.getString(2);
+				CategoryDTO dto = new CategoryDTO(c_code, c_name);
 				list.add(dto);
 			}
 			return list;

@@ -1,4 +1,4 @@
-package beeat.hotplace.model;
+package beeat.loc.model;
 
 public class LocDTO {
 	private int loc_code;

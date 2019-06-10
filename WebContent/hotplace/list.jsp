@@ -92,7 +92,7 @@
 						
 						<!-- 로그인한 경우에만 글쓰기 가능 -->
 						<c:if test="${memberDTO ne null}">
-							<div class="hotplace-insert"><a href="hotplace.do?method=insertF">글 쓰 기</a></div>
+							<div class="hotplace-insert"><a href="hotplace.do?method=insertF"> <span class="plus">+</span> 글 쓰 기</a></div>
 						</c:if>
 						
 						<!-- hotplace-category -->

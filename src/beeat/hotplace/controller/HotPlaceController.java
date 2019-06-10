@@ -22,6 +22,8 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 import beeat.member.model.*;
 import beeat.h_reply.model.*;
 import beeat.hotplace.model.*;
+import beeat.loc.model.*;
+import beeat.category.model.*;
 
 
 

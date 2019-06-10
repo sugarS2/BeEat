@@ -76,50 +76,59 @@
 			
 			<!-- content -->
 			<div id="content">
-				<center>
-					<h1>당신의 맛집을 자랑하세요!</h1>
-					
-					<c:if test="${memberDTO ne null}">
-	                	<h3><a href="board.do?method=insertF">글쓰기</a></h3>
-	                </c:if>
-					
-					
-					<!-- list null -->
-					<c:if test="${boardList.size() == 0}">
-				   <table>
-				   <tr>
-				   <td>데이터가 하나도 없음</td>
-				   </tr>
-					</table>
-					 </c:if>				
-					
-					<!-- list not null -->
-					<c:forEach items="${boardList}" var="boardList">
-					<table>
-					  <tr>
-						<td rowspan="3">
-							<a href="board.do?method=content&b_code=${boardList.b_code}">
-								<img src="./imgs/board/${boardList.b_img1}" alt="${boardList.b_img1}" 
-								width="400" height="300">
-							</a>
-						</td>
-						<td>${boardList.b_title}</td>
-					  </tr>
-					  <tr>
-						<td>${boardList.email}</td>
-					  </tr>
-					  <tr>
-						<td>${boardList.b_content}</td>
-					  </tr>
-					</table>
-					<hr style="border: solid 1px black;">
-					  </c:forEach>
-					
-				</center>
+				<div class="content-border">
+					<center>
+						<!-- board-header -->
+						<div class="board-header">
+							<!-- board-title -->
+							<div class="board-title">당신의 맛집을 자랑하세요!</div>
+							
+							<!-- 로그인한 경우에만 글쓰기 가능 -->
+							<c:if test="${memberDTO ne null}">
+								<div class="board-insert"><a href="board.do?method=insertF"> <span class="plus">+</span> 글 쓰 기</a></div>
+							</c:if>
+						</div>
+
+						<!-- list null -->
+						<c:if test="${boardList.size() == 0}">
+							<table>
+								<tr>
+									<td>데이터가 하나도 없음</td>
+								</tr>
+							</table>
+						</c:if>
+
+						<!-- list not null -->
+						<div class="boardList">
+							<ul>
+								<c:forEach items="${boardList}" var="boardDTO"> 
+									<li class="board-list-item">
+										<div class="item-wrapper">
+											<div class="b_img1"><img src="./imgs/board/${boardDTO.b_img1}" alt="${boardDTO.b_img1}" /></div>
+											<div class="item-info-wrapper">
+												<div class="b_title">" ${boardDTO.b_title} "</div> <br/><br/>
+												<div class="b_content">${boardDTO.b_content}</div> <br/>
+												<span class="name">${boardDTO.name}  &nbsp; | &nbsp; </span> <span class="b_date"> ${boardDTO.b_date} </span>
+												
+											</div>
+										</div>
+									</li>
+									<hr style="border:2px solid #efefef;"/>
+								</c:forEach>
+							</ul>
+						</div>
+						
+					</center>
+				</div>
 			</div>
 			<!-- footer -->
 			<div id="footer">
-				푸터
+				<div class="footer-info">
+					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
+					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
+					<br/>
+					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+				</div>
 			</div>
 		</div>
 	</body>

@@ -1,4 +1,4 @@
-package beeat.hotplace.model;
+package beeat.category.model;
 
 import java.util.ArrayList;
 

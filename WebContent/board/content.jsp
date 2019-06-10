@@ -67,7 +67,7 @@
 					</ul>
 				</div>
 			</div>
-			
+
 			<!-- content -->
 			<div id="content">
 				<div class="content-border">
@@ -75,90 +75,62 @@
 						<!-- 이미지 -->
 						<div class="imgList">
 							<ul>
-								<c:if test="${boardDTO.b_img1 ne null}"> <li><img class="img" src="./imgs/board/${boardDTO.b_img1}" alt="${boardDTO.b_img1}"></li> </c:if>
-								<c:if test="${boardDTO.b_img2 ne null}"> <li><img class="img" src="./imgs/board/${boardDTO.b_img2}" alt="${boardDTO.b_img2}"></li> </c:if>
-								<c:if test="${boardDTO.b_img3 ne null}"> <li><img class="img" src="./imgs/board/${boardDTO.b_img3}" alt="${boardDTO.b_img3}"></li> </c:if>
+								<c:if test="${boardDTO.b_img1 ne null}">
+									<li><img class="img" src="./imgs/board/${boardDTO.b_img1}" alt="${boardDTO.b_img1}"></li>
+								</c:if>
+								<c:if test="${boardDTO.b_img2 ne null}">
+									<li><img class="img" src="./imgs/board/${boardDTO.b_img2}" alt="${boardDTO.b_img2}"></li>
+								</c:if>
+								<c:if test="${boardDTO.b_img3 ne null}">
+									<li><img class="img" src="./imgs/board/${boardDTO.b_img3}" alt="${boardDTO.b_img3}"></li>
+								</c:if>
 							</ul>
 						</div>
+						
 						<!-- 가게명, 평점, 조회수, 답글 수  -->
 						<div class="place-info">
 							<div class="b_title">${boardDTO.b_title}</div>
 							<div class="b_replyCount">댓글수</div>
 						</div>
-						
+	
 						<!-- 가게에 대한 자세한 정보 -->
 						<div class="place-info-detail">
 							<table>
-								<tr> <th>음식 종류</th> <td>${boardDTO.c_name}</td> </tr>
-								<tr> <th>본 문</th> <td>${boardDTO.b_content}</td> </tr>
+								<tr>
+									<th>음식 종류</th>
+									<td>${boardDTO.c_name}</td>
+								</tr>
+								<tr>
+									<th>본 문</th>
+									<td>${boardDTO.b_content}</td>
+								</tr>
 							</table>
 						</div>
-						
+	
 						<div class="h_date">업데이트 : ${boardDTO.b_date}</div>
-						
+	
 						<div class="btnGroup">
-						<c:if test="${boardDTO.email == memberDTO.email}">
-							<div class="insertBtn">
-							<a href="board.do?method=updateForm&b_code=${boardDTO.b_code}">수정</a>
-							<a href="board.do?method=delete&b_code=${boardDTO.b_code}">삭제</a>
-							</div>
-						</c:if>
+							<c:if test="${boardDTO.email == memberDTO.email}">
+								<div class="insertBtn">
+									<a href="board.do?method=updateForm&b_code=${boardDTO.b_code}">수정</a>
+									<a href="board.do?method=delete&b_code=${boardDTO.b_code}">삭제</a>
+								</div>
+							</c:if>
+						</div> <br/>
+						
+						<!-- 댓글  -->
+						<div class="reply-wrapper">
+							<h2> 댓글 </h2>
+							
+							<form name="reply-form">
+								<div class="email">작성자 : ${memberDTO.name}</div>
+							</form>
 						</div>
+						
 					</center>
 				</div>
-			</div>
-			<!-- 댓글부분 -->
-			<center>
-				<h3>댓글</h3>
-				<form name="insert-form" class="insert-form" id="insert-form" method="post" action="./board.do?method=insertRe">
-				<table class="reply-table">
-					<tr>
-						<td>내용</td> 
-						<input type="hidden" name="b_code" value="${boardDTO.b_code}">
-						<input type="hidden" name="email" value="${memberDTO.email}">
-						<td><input type="text" name="br_content" id="br_content" class="br_content" placeholder="답글은 답글버튼을 눌러주세요."/></td>
-						<td><button type="submit">작 성</button></td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<th>작성자</th>
-						<th>내용</th>
-						<th>작성일자</th>
-					</tr>
-					
-					<c:forEach items="${replyList}" var="replyList">
-						<div class="replyInput">
-							<tr>
-									<input type="hidden" name="br_refer" value="${replyList.br_refer}">
-									<input type="hidden" name="br_lev" value="${replyList.br_lev}">
-									<input type="hidden" name="br_order" value="${replyList.br_order}">
-								<td>
-								<c:if test="${replyList.br_lev > 0}">
-								<img src="imgs/reply1.png">
-								</c:if>
-								${replyList.name}</td>
-								<td>${replyList.br_content}</td>
-								<td>${replyList.br_date}</td>
-								<td>${replyList.br_refer}</td>
-								<td>${replyList.br_lev}</td>
-								<td>${replyList.br_order}</td>
-								<td><input type="button" value="[답글]" class="inputReBtn" /></td>
-								<!-- 댓쓴이와 동일인일시 수정삭제 가능 -->
-								<c:if test="${replyList.email == memberDTO.email}">
-								<td><a href="#" onclick="update()">[수정]</a></td>
-								<td><a href="board.do?method=deleteRe&br_idx=${replyList.br_idx}&b_code=${replyList.b_code}">[삭제]</a></td>
-								</c:if>
-							</tr>
-							<tr class="trHidden">
-								<td><input type="hidden" name="name" class="name" placeholder="${memberDTO.name}" readonly/></td>
-								<td><input type="hidden" name="br_content" class="br_content"/></td>
-								<td><input type="hidden" value="작성" class="insertReRe" onclick="insertReRe();"/></td>
-							</tr>
-						</div>
-					</c:forEach>
-				</table>
-			</center>
+			</div> 
+			
 			<!-- footer -->
 			<div id="footer">
 				푸터
