@@ -3,7 +3,7 @@ package beeat.board.model;
 public class BoardSQL {
    static final String FIND_ALL = "SELECT b_code, b_title, c_code, b_content, b_img1, b_img2, b_img3, b_date, b_readnum, email, name FROM BOARD NATURAL JOIN MEMBER ORDER BY b_code desc";
    static final String INSERT_CONTENT = "INSERT INTO BOARD VALUES(BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, SYSDATE, 0, ?)";
-   static final String FIND_WITH_CATEGORY = "SELECT b.*, c.c_name FROM BOARD b, CATEGORY c WHERE b.b_code=? and b.c_code=c.c_code";
+   static final String FIND_WITH_CATEGORY = "SELECT b.*, c.c_name, m.name FROM BOARD b, CATEGORY c, MEMBER m WHERE b.b_code=? and b.c_code=c.c_code and b.email=m.email";
    static final String UPDATE_CONTENT = "UPDATE BOARD SET b_title=?, c_code=?, b_content=?, b_img1=?, b_img2=?, b_img3=?, b_date=SYSDATE WHERE b_code=?";
    static final String DELETE_CONTENT = "DELETE FROM BOARD WHERE b_code=?";
    static final String REPLY = "SELECT br_idx, br_content, br_date, br_refer, br_lev, br_order, b_code, email, name FROM B_REPLY NATURAL JOIN MEMBER WHERE b_code=? ORDER BY br_refer, br_lev, br_order";

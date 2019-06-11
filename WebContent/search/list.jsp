@@ -109,7 +109,7 @@
 												<span class="h_name">${hotplaceDTO.h_name}</span> <span class="h_grade">(평점 : ${hotplaceDTO.h_grade})</span> <br/><br/>
 												<span class="loc_code">지역 : ${hotplaceDTO.loc_addr1} ${hotplaceDTO.loc_addr2}</span> <br/>
 												<span class="c_code">업종 : ${hotplaceDTO.c_name}</span> <br/>
-												<span class="h_info">${hotplaceDTO.h_info}</span>
+												<span class="h_info">${hotplaceDTO.h_info} |  ${hotplaceDTO.h_date}</span>
 											</div>
 										</li>
 									</a>
@@ -119,20 +119,21 @@
 							<div class="hotplace-more-view"> 
 								<div class="searchText" style="display:none;">${searchText}</div>
 								<c:if test="${hotplaceCount%4 eq 0}">
+									<fmt:formatNumber value="${hotplaceCount/4}" var="hotplacePage" pattern="0"/>
 									<c:if test="${param.num eq null}">
-										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${hotplaceCount/4} </span> ) 
+										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${hotplacePage} </span> ) 
 									</c:if>
 									<c:if test="${param.num ne null}">
-										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${hotplaceCount/4} </span> ) 
+										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${hotplacePage} </span> ) 
 									</c:if>
 								</c:if>
 								<c:if test="${hotplaceCount%4 ne 0}">
-									<fmt:formatNumber value="${hotplaceCount/4}" var="hotplaceCount" pattern="0"/>
+									<fmt:formatNumber value="${hotplaceCount/4}" var="hotplacePage" pattern="0"/> 
 									<c:if test="${param.num eq null}">
-										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${hotplaceCount+1} </span> ) 
+										▼ 더 보 기 ( <span class="currentNum">1</span> /  <span class="totalNum"> ${(hotplacePage+1)>=(hotplaceCount/4) ? hotplacePage : (hotplacePage+1)} </span> ) 
 									</c:if>
 									<c:if test="${param.num ne null}">
-										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${hotplaceCount+1} </span> ) 
+										▼ 더 보 기 ( <span class="currentNum">${param.num}</span> /  <span class="totalNum"> ${(hotplacePage+1)>=(hotplaceCount/4) ? hotplacePage : (hotplacePage+1)} </span> ) 
 									</c:if>
 								</c:if>
 							</div>
@@ -156,7 +157,7 @@
 											</div>
 											<div class="item-info">
 												<span class="b_title">${boardDTO.b_title}</span><br/><br/>
-												<span class="c_code">업종 : ${boardDTO.c_name}</span> <br/>
+												<span class="name">글쓴이 : ${boardDTO.name}</span> <br/>
 												<span class="b_content">${boardDTO.b_content}</span>
 											</div>
 										</li>
@@ -165,7 +166,7 @@
 							</ul>
 						</div>
 					</div> <!-- board-wrapper 끝 -->
-					
+					<a id="MOVE_TOP_BTN" href="#">TOP ▲</a>
 				</div> <!-- content-border 끝 -->
 			</div> <!-- content 끝 -->
 			
@@ -175,7 +176,7 @@
 					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
 					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
 					<br/>
-					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+					<span class="cr">Copyright 2019.BeEat. All rights reserved.</span>
 				</div>
 			</div>
 		</div>

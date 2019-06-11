@@ -114,7 +114,7 @@
 					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
 					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
 					<br/>
-					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+					<span class="cr">Copyright 2019.BeEat. All rights reserved.</span>
 				</div>
 			</div>
 		</div>

@@ -73,6 +73,7 @@ a:hover{
 
 .item-wrapper .item-info-wrapper {
 	display:inline-block;
+	width:60%;
 }
 .item-wrapper .b_title {
 	width:100%;

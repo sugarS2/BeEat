@@ -7,7 +7,8 @@ $(function(){
 		var currentNum = $('.currentNum').text(); 
 		var totalNum = $('.totalNum').text(); 
 		
-		if(Number(currentNum) == Number(totalNum)){
+		//alert(Number(currentNum) + ' , ' + Number(totalNum));
+		if(Number(currentNum) >= Number(totalNum)){
 			$('.hotplace-more-view').hide();
 		}
 		
@@ -20,6 +21,28 @@ $(function(){
 				location.href="search.do?method=search&searchText="+searchText+"&num="+currentNum;
 			}
 		});
+		
+		// TOP버튼
+		$(window).scroll(function() {
+            if ($(this).scrollTop() > 1000) {
+                $('#MOVE_TOP_BTN').fadeIn();
+                $('#MOVE_TOP_BTN').css('bottom', '60px');
+                if($(this).scrollTop() > 1500){
+                	$('#MOVE_TOP_BTN').css('bottom', '135px');
+                	console.log($(this).scrollTop());
+                }
+            } else {
+                $('#MOVE_TOP_BTN').fadeOut();
+            }
+        });
+        
+        $("#MOVE_TOP_BTN").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+
 		
 	});
 });

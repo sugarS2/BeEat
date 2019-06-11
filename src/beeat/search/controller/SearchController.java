@@ -78,6 +78,7 @@ public class SearchController extends HttpServlet {
 			hotplaceList = hotplaceService.findBySearchText(searchText);
 		}
 		int hotplaceCount = hotplaceService.countBySearchText(searchText);
+		System.out.println(hotplaceCount);
 		
 		ArrayList<BoardDTO> boardList = boardService.search(searchText);
 		

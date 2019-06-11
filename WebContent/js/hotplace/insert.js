@@ -18,10 +18,10 @@ $(function(){
 				h_menu : {required:true}, 
 				h_img1 : {
 					required:true, 
-					extension:"jpg|png"
+					extension:"jpg|png|gif"
 				},
-				h_img2 : {extension:"jpg|png"},
-				h_img3 : {extension:"jpg|png"}
+				h_img2 : {extension:"jpg|png|gif"},
+				h_img3 : {extension:"jpg|png|gif"}
 			},
 			messages : {
 				h_name : {required:"매장이름을 입력해주세요."},
@@ -32,10 +32,10 @@ $(function(){
 				h_menu : {required:"매장의 대표메뉴를 입력해주세요."}, 
 				h_img1 : {
 					required:"대표 이미지 1개는 필수로 올리셔야 합니다.",
-					extension:"이미지 확장자는 .jpg 또는 .png만 가능합니다."
+					extension:"이미지 확장자는 .jpg 또는 .png , .gif 만 가능합니다."
 				},
-				h_img2 : {extension:"이미지 확장자는 .jpg 또는 .png만 가능합니다."},
-				h_img3 : {extension:"이미지 확장자는 .jpg 또는 .png만 가능합니다."}
+				h_img2 : {extension:"이미지 확장자는 .jpg 또는 .png , .gif 만 가능합니다."},
+				h_img3 : {extension:"이미지 확장자는 .jpg 또는 .png , .gif 만 가능합니다."}
 			},
 			submitHandler: function(form){
 				form.submit();

@@ -101,12 +101,16 @@
 						<!-- 가게명, 평점, 조회수, 답글 수  -->
 						<div class="place-info">
 							<div class="b_title">${boardDTO.b_title}</div>
-							<div class="b_replyCount">댓글수</div>
+							<!-- <div class="b_replyCount">댓글수</div> -->
 						</div>
 	
 						<!-- 가게에 대한 자세한 정보 -->
 						<div class="place-info-detail">
 							<table>
+								<tr>
+									<th>글쓴이</th>
+									<td>${boardDTO.name}</td>
+								</tr>
 								<tr>
 									<th>음식 종류</th>
 									<td>${boardDTO.c_name}</td>
@@ -191,7 +195,7 @@
 					<span class="projectName">BeEat &nbsp; | &nbsp;</span>
 					<span class="projectInfo"> 개발자 : 김시욱, 정찬우 &nbsp;|&nbsp; 비트캠프119기 &nbsp;|&nbsp; JSP Project</span>
 					<br/>
-					<span class="cr">Copyright 2019.김시욱,정찬우. All rights reserved.</span>
+					<span class="cr">Copyright 2019.BeEat. All rights reserved.</span>
 				</div>
 			</div>
 		</div>

@@ -110,8 +110,9 @@ class BoardDAO {
          int b_readnum = rs.getInt("b_readnum");
          String email = rs.getString("email");
          String c_name = rs.getString("c_name");
+         String name = rs.getString("name");
          BoardDTO dto = new BoardDTO(b_code, b_title, c_code, b_content, b_img1, b_img2, b_img3,
-               b_date, b_readnum, email, c_name);   
+               b_date, b_readnum, email, c_name, name);   
          return dto;
       }catch(SQLException se) {
          System.out.println("[SELECT¹® ¿¡·¯] : " + se);

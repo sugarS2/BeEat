@@ -50,6 +50,7 @@ a:hover{
 }
 .hotplace-list .hotplace-list-item .item-info {
     width: 230px;
+    height: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -57,8 +58,18 @@ a:hover{
 	font-size:25px;
 	background:#ffc000;
 }
-.hotplace-list .hotplace-list-item .item-info .h_info{
-	color:#808080;
+.hotplace-list .hotplace-list-item .item-info .h_info {
+    color: #808080;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 0.9;
+    height: 3.6em;
+    text-align: left;
+    word-wrap: break-word;
+    display: list-item;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .hotplace-list a:hover{
@@ -83,6 +94,7 @@ a:hover{
 }
 .board-header{
 	margin:20px;
+	margin-left:50px;
 }
 .board-list {
 	list-style-type:none;
@@ -91,22 +103,19 @@ a:hover{
 .board-list .board-list-item{
 	margin:30px 70px;
 	/* display:inline-block; */
-	width:45%;
+	/* width:45%; */
 }
 .board-list .board-list-item div{
 	display:inline-block;
 	vertical-align: middle;
 }
 .board-list .board-list-item img{
-	float:left;
 	width :250px;
 	height:200px;
-	
-	
+	margin-right:30px;
 }
 .board-list .board-list-item .item-info {
-    float:right;
-    width: 230px;
+    width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -115,4 +124,25 @@ a:hover{
 }
 .board-list .board-list-item .item-info .b_info{
 	color:#808080;
+	font-size:15px;
+}
+
+
+/*** TOP 버튼 ***/
+a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 60px;
+    bottom: 60px;
+    float:left;
+    width:70px; height:70px;
+    z-index: 999;
+    background:#ffc000;
+    border-radius:50%;
+    padding: 25px 10px;
+    color:#ffffff;
+    text-align:center;
+    vertical-align:middle;
+}
+a#MOVE_TOP_BTN:hover{
+	text-decoration:none;
 }

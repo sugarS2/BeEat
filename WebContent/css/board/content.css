@@ -50,16 +50,18 @@ a:hover{
 	display:inline-block;
 	padding:5px 30px;
 }
-.place-info .h_name{
+.place-info .b_title{
 	display:block;
-	font-size:60px;
+	font-size:40px;
 }
 
 /********** [content] place-info-detail **********/
 .place-info-detail {
-	text-align:left;
-	padding-left:130px;
-	padding-bottom:10px;
+    text-align: left;
+    padding-left: 130px;
+    padding-bottom: 10px;
+    padding-right: 130px;
+    width: 90%;
 }
 .place-info-detail table{
 	width:100%;
