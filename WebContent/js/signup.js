@@ -26,10 +26,11 @@ $(function(){
 				pwd_repeat : {equalTo:"비밀번호를 다시 확인하세요."},
 			},
 			submitHandler: function(form){
+				alert("회원가입 성공!!");
+				//window.location.href="../main.do";
 				form.submit();
 			},
 		    success: function(e){
-                //
             }
 		});
 		
@@ -41,12 +42,12 @@ $(function(){
 				dataType:"json",
 				data:{"email":$('#email').val(), "name":$('#name').val(), "pwd":$('#pwd').val()}
 			});
+			
+			request.done(function(data){
+				alert("회원가입 성공!");
+				window.location.href="main.do";
+			});
 		}
-		
-		request.done(function(data){
-			alert("회원가입 성공!");
-			window.location.href="../main.do";
-		});
 		
 	});
 });

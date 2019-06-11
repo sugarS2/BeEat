@@ -53,7 +53,13 @@ public class MemberController extends HttpServlet {
 		System.out.println(email + " , " + name + " , " + pwd);
 		MemberService service = MemberService.getInstance();
 		service.signup(dto);
-		response.sendRedirect("main.do");
+		if(request.getParameter("kakao") != null) {
+			PrintWriter out = response.getWriter();
+			out.write("true");
+		}else {
+			response.sendRedirect("main.do");
+		}
+		
 	}
 	
 	
